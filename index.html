@@ -253,7 +253,7 @@
                                 }
 
                                 if(CostNum[1] >-1 && CostNum[1] < 14){
-                                        tab += '<tr><td>' + '喝 ' + AbilityName[CostNum[1]]  + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[1]]  + ' 饮料' + '</td> </tr>';
                                 }
 
                                 for(let temp = OriginStep; temp < OriginStep + BranceStep; temp++){
@@ -263,7 +263,7 @@
                                     tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
-                                tab += '<tr><td>' + "接下来就是目标序列" + '</td> </tr>'
+                                tab += '<tr><th colspan = "3">' + "接下来就是目标序列，0.3的记得洗衣服，0.2的记得打孔" + '</th> </tr>'
 
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 1) + "</td>";
@@ -273,9 +273,9 @@
 
                                 if(CostNum[2] != CostNum[1]){
                                     if(CostNum[2] < 0 || CostNum[2] > 13)
-                                        tab += '<tr><td>' + "取消饮料效果" + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     else
-                                        tab += '<tr><td>' + '喝 ' + AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 2) + "</td>";
@@ -285,9 +285,9 @@
                                 if(TargetCode[2] != -1){
                                     if(CostNum[3] != CostNum[2]){
                                         if(CostNum[3] < 0 || CostNum[3] > 13)
-                                            tab += '<tr><td>' + "取消饮料效果" + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                         else
-                                            tab += '<tr><td>' + '喝 ' + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (OriginStep + BranceStep + 3) + "</td>";
@@ -331,7 +331,7 @@
             if(TargetCode[0] == -1){
                 IDtable0  =document.getElementById('IDtable0');
                 var tab='<table class = "table" id = "table0"';
-                tab += "<thead> <tr> <td >技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr></thead><tbody></tbody>";
+                tab += "<thead> <tr> <td >0.3的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr></thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -343,7 +343,7 @@
                 
                 IDtable0  =document.getElementById('IDtable1');
                 var tab='<table border=1 width=1000 id = "table1">';
-                tab += "<thead> <tr> <td >技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td>/tr></thead><tbody></tbody>";
+                tab += "<thead> <tr> <td >0.2的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td>/tr></thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -368,6 +368,22 @@
             width: 1000px;
             border: 1px;
         }
+        table th{
+            border: 1px solid black;
+            text-align: center;
+            background-color: rgb(255, 240, 220);
+        }
+        table td{
+            border: 1px solid black;
+
+            text-align: center;
+        }
+        body {
+            background-color: #e9ecef;
+            width: 90%;
+            padding: 4rem 2rem;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+        }
         .wrapper {
             background-color: #fff;
             border: 1px solid #dee2e6;
@@ -390,7 +406,7 @@
             <div class = "wrapper">
             <h2>请输入衣服种子</h2>
                 <p>求种子的网站在<a href="https://leanny.github.io/splat3seedchecker/#/seedrecover">这里</a></p>
-                <input type = "text" id = "IDSeed" value = "0x0"/>
+                <input type = "text" id = "IDSeed" value = "0x915cfc31"/>
             </div>
 
             <form method="post" action=" ">
