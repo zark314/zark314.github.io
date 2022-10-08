@@ -191,7 +191,9 @@
                         if(SeedBrance.Ability == TargetCode[0]){
                             var Cost = SeedFindNN(SeedBrance, drink, TargetCode);
                             if (Cost[0] == -2)  continue;
+
                             CostNum = CostNumCalcu(drink, Cost, OriginStep, BranceStep);
+                            if(CostNum[1] == CostNum[2] && CostNum[1] == CostNum[3] && BranceStep > 0)    continue;
                             if(CostNum[0] >= CostNumP) continue;
                             CostNumP = CostNum[0];
                             ResStep[OriginStep + BranceStep + 1] = copyobj(SeedBrance.GetNextAbility(CostNum[2]));
@@ -235,7 +237,6 @@
                                     newtd.innerHTML = AbilityName[CostNum[3]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
-
                                 return;
                             }
                             else{
@@ -329,9 +330,10 @@
             TargetCode[2] = parseInt(document.getElementById('IDTarget3').value);
 
             if(TargetCode[0] == -1){
+
                 IDtable0  =document.getElementById('IDtable0');
-                var tab='<table class = "table" id = "table0"';
-                tab += "<thead> <tr> <td >0.3的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr></thead><tbody></tbody>";
+                var tab='<table class = "table"  id = "table0">';
+                tab += "<thead> <tr> <td >0.3的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr> </thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -342,8 +344,8 @@
                 }
                 
                 IDtable0  =document.getElementById('IDtable1');
-                var tab='<table border=1 width=1000 id = "table1">';
-                tab += "<thead> <tr> <td >0.2的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td>/tr></thead><tbody></tbody>";
+                var tab='<table class = "table"  id = "table1">';
+                tab += "<thead> <tr> <td >0.2的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td> </tr> </thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -365,7 +367,7 @@
             margin-top: 50px;
             margin-bottom: 100px;
             margin-left: 20px;
-            width: 1000px;
+            margin-right: 20px;
             border: 1px;
         }
         table th{
@@ -440,8 +442,8 @@
             </form>
             <div class = "wrapper">
                 <h3>请输入目标序列</h3>
-                <p>可以只输入两个目标序列，需要将最后一个位置选未知</p>
-                <p>三个序列位置都为未知时将输出所有技能的0.3和0.2消耗</p>
+                <p>可以只输入两个目标序列，需要将最后一个位置选位置</p>
+                <p>三个序列位置都为未知时将输出所有节能的0.3和0.2消耗</p>
                     <select id="IDTarget1">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
