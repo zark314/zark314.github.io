@@ -91,10 +91,6 @@
             }
             let Weight = Seed % AllWeight;
 
-            // IDtable0  = document.getElementById('IDtable1');
-            // var tab='<table border=1 width=1000"><tr>' + AllWeight + '   ' + Weight + '</tr> </table>';
-            // IDtable0.innerHTML = tab;
-
             for(var temp = 0; temp < 14 ; temp++){
                 if(temp == Drink)   continue;
                 else if(temp == Wtend)    Weight = Weight - 1;
@@ -245,14 +241,14 @@
                             else{
                                 IDtable0  = document.getElementById('IDtable' + tablenum);
                                 tablenum ++;
-                                var tab='<table border=1 width=1000">'
-                                tab = tab + "<thead><tr> <td style='background:white'>编号</td><td style='background:white'>技能</td><td style='background:white'>种子</td></tr></thead><tbody>"
+                                var tab='<table class = "table" >'
+                                tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
                                 
                                 for(let temp = 0; temp < OriginStep; temp++){
                                     tab += '<tr>';
-                                    tab += "<td style='background:white'>" + (temp + 1) + "</td>";
-                                    tab += "<td style='background:white'>" + AbilityName[ResStep[temp].Ability]  + "</td>";
-                                    tab += "<td style='background:white'>0x" + ResStep[temp].Seed.toString(16) + "</td>";
+                                    tab += "<td >" + (temp + 1) + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[temp].Ability]  + "</td>";
+                                    tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
 
@@ -262,17 +258,17 @@
 
                                 for(let temp = OriginStep; temp < OriginStep + BranceStep; temp++){
                                     tab += '<tr>';
-                                    tab += "<td style='background:white'>" + (temp + 1) + "</td>";
-                                    tab += "<td style='background:white'>" + AbilityName[ResStep[temp].Ability]  + "</td>";
-                                    tab += "<td style='background:white'>0x" + ResStep[temp].Seed.toString(16) + "</td>";
+                                    tab += "<td >" + (temp + 1) + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[temp].Ability]  + "</td>";
+                                    tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
                                 tab += '<tr><td>' + "接下来就是目标序列" + '</td> </tr>'
 
                                 tab += '<tr>';
-                                tab += "<td style='background:white'>" + (OriginStep + BranceStep + 1) + "</td>";
-                                tab += "<td style='background:white'>" + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
-                                tab += "<td style='background:white'>0x" + ResStep[OriginStep + BranceStep].Seed.toString(16) + "</td>";
+                                tab += "<td >" + (OriginStep + BranceStep + 1) + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
+                                tab += "<td >0x" + ResStep[OriginStep + BranceStep].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
 
                                 if(CostNum[2] != CostNum[1]){
@@ -282,9 +278,9 @@
                                         tab += '<tr><td>' + '喝 ' + AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
-                                tab += "<td style='background:white'>" + (OriginStep + BranceStep + 2) + "</td>";
-                                tab += "<td style='background:white'>" + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
-                                tab += "<td style='background:white'>0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
+                                tab += "<td >" + (OriginStep + BranceStep + 2) + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
+                                tab += "<td >0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
                                 if(TargetCode[2] != -1){
                                     if(CostNum[3] != CostNum[2]){
@@ -294,9 +290,9 @@
                                             tab += '<tr><td>' + '喝 ' + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
-                                    tab += "<td style='background:white'>" + (OriginStep + BranceStep + 3) + "</td>";
-                                    tab += "<td style='background:white'>" + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
-                                    tab += "<td style='background:white'>0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
+                                    tab += "<td >" + (OriginStep + BranceStep + 3) + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
+                                    tab += "<td >0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
 
@@ -334,8 +330,8 @@
 
             if(TargetCode[0] == -1){
                 IDtable0  =document.getElementById('IDtable0');
-                var tab='<table border=1 width=1000 id = "table0">';
-                tab += "<thead> <tr> <td style='background:white'>技能</td><td style='background:white'>所需步骤</td><td style='background:white'>所需饮料数量</td><td style='background:white'>饮料1</td><td style='background:white'>饮料2</td><td style='background:white'>饮料3</td></tr></thead><tbody></tbody>";
+                var tab='<table class = "table" id = "table0"';
+                tab += "<thead> <tr> <td >技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr></thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -347,7 +343,7 @@
                 
                 IDtable0  =document.getElementById('IDtable1');
                 var tab='<table border=1 width=1000 id = "table1">';
-                tab += "<thead> <tr> <td style='background:white'>技能</td><td style='background:white'>所需步骤</td><td style='background:white'>所需饮料数量</td><td style='background:white'>饮料1</td><td style='background:white'>饮料2</td>/tr></thead><tbody></tbody>";
+                tab += "<thead> <tr> <td >技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td>/tr></thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -363,30 +359,14 @@
         }
     </script>
     <style>
+
         table {
             border-collapse: collapse;
-            margin-top: 200px;
-            margin-left: 500px;
-        }
-        table th{
-            border: 1px solid black;
-            width: 80px;
-            height: 40px;
-            text-align: center;
-            background-color: cornsilk;
-        }
-        table td{
-           
-            border: 1px solid black;
-            width: 80px;
-            height: 40px;
-            text-align: center;
-        }
-        body {
-            background-color: #e9ecef;
-            width: 90%;
-            padding: 4rem 2rem;
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            margin-left: 20px;
+            width: 1000px;
+            border: 1px;
         }
         .wrapper {
             background-color: #fff;
@@ -394,13 +374,6 @@
             padding: 15px;
             border-radius: 1rem;
             margin-top: 10px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: .5rem;
-            font-weight: 500;
-            line-height: 1.2;
-            margin-top: 0;
         }
         </style>
     <body>
@@ -417,7 +390,7 @@
             <div class = "wrapper">
             <h2>请输入衣服种子</h2>
                 <p>求种子的网站在<a href="https://leanny.github.io/splat3seedchecker/#/seedrecover">这里</a></p>
-                <input type = "text" id = "IDSeed" value = "0x915cfc31"/>
+                <input type = "text" id = "IDSeed" value = "0x0"/>
             </div>
 
             <form method="post" action=" ">
@@ -506,7 +479,7 @@
                     </select>
             </div>
             <div class = "wrapper">
-                <input  id="button" type="button" value="生成方案" onclick="MainFunction();">
+            <input  id="button" type="button" value="生成方案" onclick="MainFunction();">
             
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
