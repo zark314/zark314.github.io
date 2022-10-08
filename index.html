@@ -118,22 +118,26 @@
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
                 let SeedNTemp = copyobj(Seed);
                 SeedNTemp.GetNextAbility((temp + drink) % 15);
-                if(SeedNTemp.Ability == Target){
+                let matchability = SeedNTemp.Ability;
+                let matchtemp = Matchcode(matchability, Target);
+                if(matchtemp[0] != -2){
                     return (temp + drink) % 15;
                 }
             }
             return -2;
         }
-        function SeedFindNN(Seed, drink, TargetCode){
+        function SeedFindNN(Seed, drink, matchcc){
             let cost1 = -2;
             let cost2 = -2;
             if(drink < 0)   drink = 14;
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
                 let SeedT = copyobj(Seed);
-                if((SeedT.GetNextAbility((temp + drink) % 15)).Ability == TargetCode[1]){
+                var matchability = (SeedT.GetNextAbility((temp + drink) % 15)).Ability;
+                var matchccc = Matchcode(matchability, matchcc);
+                if(matchccc[0] != -2){
                     cost1 = (temp + drink) % 15;
-                    if(TargetCode[2] != -1){
-                        cost2 = SeedFindN(SeedT, temp, TargetCode[2]);
+                    if(matchccc[0] > -1 || matchccc[1] > -1 ||matchccc[2] > -1){
+                        cost2 = SeedFindN(SeedT, temp, matchccc);
                         if(cost2 == -2) return [-2,-2];
                     }
                     return [cost1, cost2];
@@ -163,10 +167,34 @@
 
         function cleartable(){
             for(let temp = 0; temp < 9; temp++){
-                IDtable0  =document.getElementById('IDtable' + temp);
+                IDtable0  = document.getElementById('IDtable' + temp);
                 tab = '';
                 IDtable0.innerHTML = tab;
             }
+        }
+
+        function Matchcode(ability, targets){
+            res = new Array(3);
+            res[0] = targets[0];
+            res[1] = targets[1];
+            res[2] = targets[2];
+            for(let temp = 0; temp < 3; temp++){
+                if(ability == res[temp]){
+                    res[temp] = -1;
+                    return res;
+                }
+            }
+            return [-2, -2, -2];
+        }
+
+        function TargetCodeNum(TargetCode){
+            let res = 0;
+            for(let temp = 0; temp < 3; temp++){
+                if(TargetCode[temp] > -1){
+                    res ++;
+                }
+            }
+            return res;
         }
 
         function SeedFind(Seed, TargetCode, IsFindAll){
@@ -188,9 +216,30 @@
                             ResStep[OriginStep + temp] = copyobj(SeedBrance);
                         }
                         
-                        if(SeedBrance.Ability == TargetCode[0]){
-                            var Cost = SeedFindNN(SeedBrance, drink, TargetCode);
+                        var matchc = Matchcode(SeedBrance.Ability, TargetCode);
+
+
+                        if(matchc[0] != -2 ){
+
+                        //    //test
+                        //     IDtable0  = document.getElementById('IDtable0');
+                        //     var tab = '<p>' + TargetCode[0] + ' ' +TargetCode[1] + ' ' +TargetCode[2] + ' ' + ' </p>';
+                        //     IDtable0.innerHTML = tab;
+
+                        //     //test
+                        //     IDtable0  = document.getElementById('IDtable1');
+                        //     var tab = '<p>' + matchc[0] + ' ' +matchc[1] + ' ' +matchc[2] + ' ' + ' </p>';
+                        //     IDtable0.innerHTML = tab;
+
+                            var Cost = SeedFindNN(SeedBrance, drink, matchc);
                             if (Cost[0] == -2)  continue;
+
+                            // //test
+                            // IDtable0  = document.getElementById('IDtable2');
+                            // var tab = '<p>' + matchc[0] + ' ' +matchc[1] + ' ' +matchc[2] + ' ' + ' </p>';
+                            // IDtable0.innerHTML = tab;
+                            // return;
+                            
 
                             CostNum = CostNumCalcu(drink, Cost, OriginStep, BranceStep);
                             if(CostNum[1] == CostNum[2] && CostNum[1] == CostNum[3] && BranceStep > 1)    continue;
@@ -283,7 +332,7 @@
                                 tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
                                 tab += "<td >0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
-                                if(TargetCode[2] != -1){
+                                if(TargetCodeNum(TargetCode) == 3){
                                     if(CostNum[3] != CostNum[2]){
                                         if(CostNum[3] < 0 || CostNum[3] > 13)
                                             tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
@@ -329,7 +378,7 @@
             TargetCode[1] = parseInt(document.getElementById('IDTarget2').value);
             TargetCode[2] = parseInt(document.getElementById('IDTarget3').value);
 
-            if(TargetCode[0] == -1){
+            if(TargetCode[0] == -1 && TargetCode[1] == -1 && TargetCode[2] == -1){
 
                 IDtable0  =document.getElementById('IDtable0');
                 var tab='<table class = "table"  id = "table0">';
@@ -442,8 +491,10 @@
             </form>
             <div class = "wrapper">
                 <h3>请输入目标序列</h3>
+
                 <p>可以只输入两个目标序列，需要将最后一个位置选位置</p>
-                <p>三个序列位置都为未知时将输出所有节能的0.3和0.2消耗</p>
+                <p>三个序列位置都为未知时将输出所有技能的0.3和0.2消耗</p>
+                <p>ps.增加了无序搜索的功能，会从序列排列组合的结果中挑选最优解</p>
                     <select id="IDTarget1">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
