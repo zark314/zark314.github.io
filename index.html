@@ -193,7 +193,7 @@
                             if (Cost[0] == -2)  continue;
 
                             CostNum = CostNumCalcu(drink, Cost, OriginStep, BranceStep);
-                            if(CostNum[1] == CostNum[2] && CostNum[1] == CostNum[3] && BranceStep > 0)    continue;
+                            //if(CostNum[1] == CostNum[2] && CostNum[1] == CostNum[3] && BranceStep > 0)    continue;
                             if(CostNum[0] >= CostNumP) continue;
                             CostNumP = CostNum[0];
                             ResStep[OriginStep + BranceStep + 1] = copyobj(SeedBrance.GetNextAbility(CostNum[2]));
