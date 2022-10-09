@@ -118,7 +118,7 @@
             if(drinktmp < 0)  drinktmp = 14;
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
 
-                if(ddrinklist[temp] == 1)   continue;
+                if(ddrinklist[(temp + drink) % 15] == 1)   continue;
 
                 let SeedNTemp = copyobj(Seed);
                 SeedNTemp.GetNextAbility((temp + drink) % 15);
@@ -136,7 +136,7 @@
             if(drink < 0)   drink = 14;
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
 
-                if(ddrinklist[temp] == 1)   continue;
+                if(ddrinklist[(temp + drink) % 15] == 1)   continue;
 
                 let SeedT = copyobj(Seed);
                 var matchability = (SeedT.GetNextAbility((temp + drink) % 15)).Ability;
@@ -144,7 +144,7 @@
                 if(matchccc[0] != -2){
                     cost1 = (temp + drink) % 15;
                     if(matchccc[0] > -1 || matchccc[1] > -1 ||matchccc[2] > -1){
-                        cost2 = SeedFindN(SeedT, temp, matchccc);
+                        cost2 = SeedFindN(SeedT, (temp + drink) % 15, matchccc);
                         if(cost2 == -2) return [-2,-2];
                     }
                     return [cost1, cost2];
@@ -332,9 +332,11 @@
                                 tab += '</tr>';
 
                                 if(CostNum[2] != CostNum[1]){
-                                    if(CostNum[2] < 0 || CostNum[2] > 13)
+                                    if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] != -1 && CostNum[1] != 14))
                                         tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
-                                    else
+                                    else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
+                                        tab = tab;
+                                    }else
                                         tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
@@ -344,9 +346,11 @@
                                 tab += '</tr>';
                                 if(TargetCodeNum(TargetCode) == 3){
                                     if(CostNum[3] != CostNum[2]){
-                                        if(CostNum[3] < 0 || CostNum[3] > 13)
+                                        if(CostNum[3] == -1 || CostNum[3] == 14 &&(CostNum[2] != -1 && CostNum[2] != 14))
                                             tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
-                                        else
+                                        else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
+                                            tab = tab;
+                                        }else
                                             tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
@@ -384,6 +388,37 @@
                 return ;
             } 
 
+            if(drinkdonthave == 100){
+                for(let i = 0; i< 14;i++){
+                    if(ddrinklist[i] == 1){
+                        alert("选择禁用饮料请把其他所有饮料删除");
+                        return;
+                    }
+                }
+                for(let i = 0; i < 14;i++){
+                    ddrinklist[i] = 1;
+                }
+                newtd.innerHTML = '饮料已禁用';
+                newtr.appendChild(newtd);
+                MainFunction();
+                var newtd = document.createElement("td");
+                var delbtn = document.createElement("a");
+                
+                delbtn.innerText = ' 删除 ';
+                delbtn.href = "#";
+                delbtn.onclick = function (){
+                    for(let i = 0 ; i < 15; i++){
+                        ddrinklist[i] = 0;
+                    }
+                    tabtoadd.removeChild(this.parentNode.parentNode);
+                    MainFunction();
+                    return ;
+                }
+                newtd.appendChild(delbtn);
+                newtr.appendChild(newtd);
+                return;
+            }
+
             if(ddrinklist[drinkdonthave] == 0){
                 ddrinklist[drinkdonthave] = 1;
             }else{
@@ -397,7 +432,7 @@
 
             var newtd = document.createElement("td");
             var delbtn = document.createElement("a");
-            
+            MainFunction();
             delbtn.innerText = ' 删除 ';
             delbtn.href = "#";
             delbtn.onclick = function (){
@@ -405,8 +440,14 @@
                     if(this.parentNode.parentNode.innerHTML == "<td>" + AbilityName[temp] + '</td><td><a href="#"> 删除 </a></td>'){
                         ddrinklist[temp] = 0;
                     }
+                    if(this.parentNode.parentNode.innerHTML == "<td>" + '禁用饮料' + '</td><td><a href="#"> 删除 </a></td>'){
+                        for(let i = 0; i< 14; i++){
+                            ddrinklist[temp] = 1;
+                        }
+                    }
                 }
                 tabtoadd.removeChild(this.parentNode.parentNode);
+                MainFunction();
             }
             newtd.appendChild(delbtn);
             newtr.appendChild(newtd);
@@ -617,7 +658,8 @@
             </div>
 
             <div class = "wrapper">
-                <h3>请输入没有的饮料，将在搜索的时候避开此饮料</h3>
+                <h3>请输入没有的饮料，将在搜索的时候避开这些饮料</h3>
+                <p>可以输入多个饮料，但是请不要重复输入</p>
                     <select id="DrinkDontHave">
                         <option value= '-1' >无</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
@@ -634,6 +676,7 @@
                         <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
                         <option value= '12' >防爆 / 减轻次要武器影响</option>
                         <option value= '13' >行动强化</option>
+                        <option value= '100' >禁用饮料</option>
                     </select>
                     <input  id="button" type="button" value="添加" onclick="AddTable();">
                     <table class = "table2", id="drinktable"> <head> <tr> <td> 没有的饮料券 </td> <td>  操作  </td> </tr></head> </table>
