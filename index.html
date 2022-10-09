@@ -47,6 +47,7 @@
         var BrandTend = [11, 0, 9, 8, 4, 12, 3, 4, 6, 5, 7, 1, 1, 2, 8, 6, 0, 3, 12, 13, 
         2, 9, 5, 7, 1, 6, 10, 11, 0, 10, 13, 10, 13, 5, -1, -1, -1, -1, -1, -1];
 
+        var ddrinklist = [0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0];
         class GearAbility{
             constructor(Ability, Seed, Brand){
                 this.Ability = Ability;
@@ -116,6 +117,9 @@
             let drinktmp = drink;
             if(drinktmp < 0)  drinktmp = 14;
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
+
+                if(ddrinklist[temp] == 1)   continue;
+
                 let SeedNTemp = copyobj(Seed);
                 SeedNTemp.GetNextAbility((temp + drink) % 15);
                 let matchability = SeedNTemp.Ability;
@@ -131,6 +135,9 @@
             let cost2 = -2;
             if(drink < 0)   drink = 14;
             for(let temp = 0; temp < AbilityName.length + 1; temp++){
+
+                if(ddrinklist[temp] == 1)   continue;
+
                 let SeedT = copyobj(Seed);
                 var matchability = (SeedT.GetNextAbility((temp + drink) % 15)).Ability;
                 var matchccc = Matchcode(matchability, matchcc);
@@ -210,6 +217,9 @@
                 for(var BranceStep = 0; BranceStep < 3; BranceStep ++){
 
                     for(var drink = -1; drink < AbilityName.length; drink++){
+                        if(drink != -1){
+                            if(ddrinklist[drink] == 1)  continue;
+                        }
                         SeedBrance = copyobj(SeedOri);
                         for(var temp = 0; temp < BranceStep + 1; temp++){
                             SeedBrance.GetNextAbility(drink);
@@ -362,10 +372,49 @@
             return Seedres;
         }
 
+        function AddTable(){
+            var drinkdonthave = parseInt(document.getElementById('DrinkDontHave').value);
+            var tabtoadd = document.getElementById('drinktable');
+            var newtr = document.createElement("tr");
+            tabtoadd.appendChild(newtr);
+            var newtd = document.createElement("td");
+
+            if(drinkdonthave == -1){
+                alert("请输入饮料券");
+                return ;
+            } 
+
+            if(ddrinklist[drinkdonthave] == 0){
+                ddrinklist[drinkdonthave] = 1;
+            }else{
+                alert("请不要输入相同饮料");
+                return;
+            }
+
+            
+            newtd.innerHTML = AbilityName[drinkdonthave];
+            newtr.appendChild(newtd);
+
+            var newtd = document.createElement("td");
+            var delbtn = document.createElement("a");
+            
+            delbtn.innerText = ' 删除 ';
+            delbtn.href = "#";
+            delbtn.onclick = function (){
+                for(let temp = 0;temp < 14;temp ++){
+                    if(this.parentNode.parentNode.innerHTML == "<td>" + AbilityName[temp] + '</td><td><a href="#"> 删除 </a></td>'){
+                        ddrinklist[temp] = 0;
+                    }
+                }
+                tabtoadd.removeChild(this.parentNode.parentNode);
+            }
+            newtd.appendChild(delbtn);
+            newtr.appendChild(newtd);
+
+        }
 
         function MainFunction(){
             cleartable();
-
 
             var SeedMain = new GearAbility;
             SeedMain.Seed = parseInt(document.getElementById('IDSeed').value);
@@ -411,10 +460,26 @@
     </script>
     <style>
 
+
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            color: #b8a5f5;
+        }
         table {
             border-collapse: collapse;
             margin-top: 50px;
             margin-bottom: 100px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border: 1px;
+    
+        }
+        .table2 {
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 5px;
             margin-left: 20px;
             margin-right: 20px;
             border: 1px;
@@ -441,6 +506,10 @@
             padding: 15px;
             border-radius: 1rem;
             margin-top: 10px;
+        }
+        table tr.header, table tr:hover {
+            /* 表头及鼠标移动过 tr 时添加背景 */
+            background-color: #f1f1f1;
         }
         </style>
     <body>
@@ -491,8 +560,7 @@
             </form>
             <div class = "wrapper">
                 <h3>请输入目标序列</h3>
-
-                <p>可以只输入两个目标序列，需要将最后一个位置选 未知</p>
+                <p>可以只输入两个目标序列，需要将最后一个位置选位置</p>
                 <p>三个序列位置都为未知时将输出所有技能的0.3和0.2消耗</p>
                 <p>ps.增加了无序搜索的功能，会从序列排列组合的结果中挑选最优解</p>
                     <select id="IDTarget1">
@@ -547,9 +615,32 @@
                         <option value= '13' >行动强化</option>
                     </select>
             </div>
+
+            <div class = "wrapper">
+                <h3>请输入没有的饮料，将在搜索的时候避开此饮料</h3>
+                    <select id="DrinkDontHave">
+                        <option value= '-1' >无</option>
+                        <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
+                        <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable();">
+                    <table class = "table2", id="drinktable"> <head> <tr> <td> 没有的饮料券 </td> <td>  操作  </td> </tr></head> </table>
+            </div>
+
             <div class = "wrapper">
             <input  id="button" type="button" value="生成方案" onclick="MainFunction();">
-            
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
             <div id = "IDtable2"></div>
