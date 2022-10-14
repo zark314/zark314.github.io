@@ -517,6 +517,14 @@
                 SeedFind(SeedMain, TargetCode, 0);
             }
         }
+        function countpeople(){
+            var fso = new ActiveXObject(Scripting.FileSystemObject);
+            var f = fso.createtextfile("countpeople.txt",2,true);
+            f.writeLine("1");
+
+            f.close;
+        }
+        
     </script>
     <style>
         .ability0{
@@ -707,7 +715,7 @@
             </div>
 
             <div class = "wrapper">
-            <input  id="button" type="button" value="Solve" onclick="newtarget();MainFunction();">
+            <input  id="button" type="button" value="Solve" onclick="newtarget();MainFunction();countpeople();">
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
             <div id = "IDtable2"></div>
