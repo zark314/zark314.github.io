@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>SplatoonGearSearch</title>
+        <title>喷喷喷技能序列搜索器</title>
         <link rel="icon" href="icon/star.ico">
 	</head>
     <script>
@@ -581,7 +581,7 @@
             <h1>喷喷喷技能序列搜索器</h1>
                 <a href="index_fcn.html">切换繁体中文</a>
                 <a href="index_en.html">Change to English</a>
-                <p>欢迎使用本网站</p>
+                <p>欢迎使用本网站，如果不会，请看这里：<a href="Tutorial.html">教程与更新公告</a></p>
 				<p>此网站是用来辅助寻找自己想要的技能的</p>
                 <p>此网站由我一人完成，并且我之前并没有学过JS，如有bug实属正常</p>
                 <p>如果有bug请反馈给我qq:1464243589</p>
@@ -628,6 +628,10 @@
                 <p>可以只输入两个目标序列，需要将最后一个位置选位置</p>
                 <p>三个序列位置都为未知时将输出所有技能的0.3和0.2消耗</p>
                 <p>ps.增加了无序搜索的功能，会从序列排列组合的结果中挑选最优解</p>
+                <p>ps.在目标序列出现之前的序列可以通过喝饮料的方式跳过某些种子，差不多能短个35%，但是大家有多余的饮料券情况并不统一，所以我就没写这样的功能</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;要是有这样的需求，请去lean大佬的网站上自行寻找方案。目标序列之前可以随便喝饮料，只要在目标序列那三个种子生成的时候按照我的方案就行</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;要是有好的方法来实现饮料跳过的功能也可以联系我</p>
+                <p>还有就是使用超级蝾螈不管有没有喝饮料都是产生的无饮料情况下的序列</p>
                     <select id="IDTarget1">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
@@ -708,6 +712,7 @@
 
             <div class = "wrapper">
             <input  id="button" type="button" value="生成方案" onclick="newtarget();MainFunction();">
+
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
             <div id = "IDtable2"></div>
