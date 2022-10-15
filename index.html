@@ -207,6 +207,7 @@
         }
 
         function SeedFind(Seed, TargetCode, IsFindAll){
+            var drinkjump = parseInt(document.getElementById('DrinkJump').value);
             var SeedOri = copyobj(Seed);
             var CostNum = new Array();
             var CostNumP = 4;
@@ -312,7 +313,7 @@
                                 // newtr.appendChild(newtd);
                                 return;
                             }
-                            else{
+                            else if(drinkjump == -1){
                                 IDtable0  = document.getElementById('IDtable' + tablenum);
                                 tablenum ++;
                                 var tab='<table class = "table" >'
@@ -369,6 +370,93 @@
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (OriginStep + BranceStep + 3) + "</td>";
+                                    tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 2].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
+                                    tab += "<td >0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
+                                    tab += '</tr>';
+                                }
+
+                                tab += '</tbody></table>';
+                                IDtable0.innerHTML = tab;
+                            }else{
+                                IDtable0  = document.getElementById('IDtable' + tablenum);
+                                tablenum ++;
+                                var tab='<table class = "table" >';
+                                var tempjudge = -1;
+                                var judgejudge = -1;
+                                tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
+                                tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
+                                tab += '<tr><th colspan = "3">' + '该饮料是为了缩短序列，请保持饮料状态直到下次提示' + '</td> </tr>';
+                                var tempseed = copyobj(Seed);
+                                for(let temp = 0; temp < OriginStep + BranceStep + 2; temp++){
+                                    tempseed.GetNextAbility(drinkjump);
+                                    if(tempseed.Seed == ResStep[OriginStep + BranceStep].Seed){
+                                        tempjudge = temp;
+                                        //alert(tempjudge + ' ' + tempseed.Seed.toString(16) + ' ' + ResStep[OriginStep + BranceStep].Seed.toString(16));
+                                        break;
+                                    }
+                                }
+                                //alert(tempjudge);
+                                //alert('yes' + tempjudge + '  0x'+ ResStep[OriginStep + BranceStep].Seed.toString(16) + '  ' + temp);
+                                if(tempjudge == -1){
+                                    var tempseed = copyobj(Seed);
+                                    for(let temp = 0; temp < OriginStep + BranceStep; temp++){
+                                        tempseed.GetNextAbility(drinkjump);
+                                        if(tempseed.Seed == ResStep[OriginStep + BranceStep - 1].Seed){
+                                            tempjudge = temp + 1;
+                                            judgejudge = 1;
+                                            //alert(tempjudge);
+                                            break;
+                                        }
+                                    }
+                                }
+                                var tempseed = copyobj(Seed);
+                                for(let temp = 0; temp < tempjudge; temp++){
+                                    tempseed.GetNextAbility(drinkjump);
+                                    tab += '<tr>';
+                                    tab += "<td >" + (temp + 1) + "</td>";
+                                    tab += "<td >"+"<img src = 'icon/skill/" + tempseed.Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[tempseed.Ability]  + "</td>";
+                                    tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
+                                    tab += '</tr>';
+                                }
+                                if(judgejudge == 1){
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
+                                }else if(CostNum[1] < 0 || CostNum[1] > 13){
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
+                                }
+                                if(CostNum[1] > -1 && CostNum[1] < 14){
+                                    tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
+                                }
+
+                                tab += '<tr><th colspan = "3">' + "接下来就是目标序列，0.3的记得洗衣服，0.2的记得打孔" + '</th> </tr>'
+                                tab += '<tr>';
+                                tab += "<td >" + (tempjudge + 1) + "</td>";
+                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep].Ability + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
+                                tab += "<td >0x" + ResStep[OriginStep + BranceStep].Seed.toString(16) + "</td>";
+                                tab += '</tr>';
+                                if(CostNum[2] != CostNum[1]){
+                                    if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] != -1 && CostNum[1] != 14))
+                                        tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
+                                    else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
+                                        tab = tab;
+                                    }else
+                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
+                                }
+                                tab += '<tr>';
+                                tab += "<td >" + (tempjudge + 2) + "</td>";
+                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 1].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
+                                tab += "<td >0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
+                                tab += '</tr>';
+                                if(TargetCodeNum(TargetCode) == 3){
+                                    if(CostNum[3] != CostNum[2]){
+                                        if(CostNum[3] == -1 || CostNum[3] == 14 &&(CostNum[2] != -1 && CostNum[2] != 14))
+                                            tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
+                                        else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
+                                            tab = tab;
+                                        }else
+                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
+                                    }
+                                    tab += '<tr>';
+                                    tab += "<td >" + (tempjudge + 3) + "</td>";
                                     tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 2].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
                                     tab += "<td >0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
@@ -586,7 +674,7 @@
                 <p>欢迎使用本网站，这里有<strong>教程与问过的问题</strong>，有问题可以参考一下，如果还无法解决可以联系我：<a href="Tutorial.html">教程与更新公告</a></p>
 				<p>此网站是用来辅助寻找自己想要的技能的</p>
                 <p>此网站由我一人完成，并且我之前并没有学过JS，如有bug实属正常</p>
-                <p>如果有bug请反馈给我qq:1464243589</p>
+                <p>如果有bug或有建议请反馈给我qq:1464243589</p>
                 <p>在使用我的方案之前请去lean大佬的网站复查一下</p>
                 <p>ps.lean大佬的网站也增加了搜索目标序列的功能，结果和我的是差不多的，可以去试试</p>
 		    </div>
@@ -714,9 +802,31 @@
             </div>
 
             <div class = "wrapper">
+            <h3>请输入想用来缩短搜索序列的饮料</h3>
+            <p>目标序列之前的序列可以使用氪多余的饮料的方法跳过某些种子，请选择使用什么饮料跳过：</p>
+            <p><strong>注意</strong>：此功能不会影响到全技能距离对比表，预计使用此功能平均可减少35%的序列长度</p>
+            <select id="DrinkJump">
+                <option value= '-1' >不使用饮料跳过</option>
+                <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
+                <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
+                <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                <option value= '3' >走速 / 提升人类状态移动速度</option>
+                <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                <option value= '8' >快速复活 / 缩短复活时间</option>
+                <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                <option value= '10' >副强 / 提升次要武器的性能</option>
+                <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                <option value= '12' >防爆 / 减轻次要武器影响</option>
+                <option value= '13' >行动强化</option>
+            </select>
+            </div>
+            <div class = "wrapper">
+            <p>要是没有输出，说明在40步以内找不到对应序列，建议放弃</p>
+            <p>输出的方案并不唯一，按照消耗饮料券的从多到少显示最少步骤的方案，最多可能有四个方案</p>
             <input  id="button" type="button" value="生成方案" onclick="newtarget();MainFunction();">
-            <p>要是没有输出说明在40步以内找不到对应序列，建议放弃</p>
-
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
             <div id = "IDtable2"></div>
