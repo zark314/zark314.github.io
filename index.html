@@ -714,15 +714,60 @@
                 </p>
                 </div>
             </form>
+
+            <div class = "wrapper">
+                <h3>请输入没有的饮料，将在搜索的时候避开这些饮料</h3>
+                <p>可以输入多个饮料，但是请不要重复输入</p>
+                    <select id="DrinkDontHave">
+                        <option value= '-1' >无</option>
+                        <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
+                        <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
+                        <option value= '100' >禁用饮料</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable();">
+                    <table class = "table2", id="drinktable"> <head> <tr> <td> 没有的饮料券 </td> <td>  操作  </td> </tr></head> </table>
+            </div>
+
+            <div class = "wrapper">
+            <h3>请输入想用来缩短搜索序列的饮料</h3>
+            <p>目标序列之前的序列可以使用氪多余的饮料的方法跳过某些种子，请选择使用什么饮料跳过：</p>
+            <p><strong>注意</strong>：此功能不会影响到全技能距离对比表，预计使用此功能平均可减少35%的序列长度</p>
+            <select id="DrinkJump">
+                <option value= '-1' >不使用饮料跳过</option>
+                <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
+                <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
+                <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                <option value= '3' >走速 / 提升人类状态移动速度</option>
+                <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                <option value= '8' >快速复活 / 缩短复活时间</option>
+                <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                <option value= '10' >副强 / 提升次要武器的性能</option>
+                <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                <option value= '12' >防爆 / 减轻次要武器影响</option>
+                <option value= '13' >行动强化</option>
+            </select>
+            </div>
+
             <div class = "wrapper">
                 <h3>请输入目标序列</h3>
                 <p>可以只输入两个目标序列，需要将最后一个位置选<strong>未知</strong>，输入0.2的目的是在0.2出来<strong>之前用10碎片打技能</strong></p>
                 <p><strong>三个序列位置都为未知</strong>时将输出所有技能的0.3和0.2消耗</p>
                 <p>ps.增加了<strong>无序搜索</strong>的功能，会从序列排列组合的结果中挑选最优解</p>
-                <p>ps.在目标序列出现之前的序列可以通过喝饮料的方式跳过某些种子，差不多能短个35%，但是大家有多余的饮料券情况并不统一，所以我就没写这样的功能</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;要是有这样的需求，请去lean大佬的网站上自行寻找方案。目标序列之前可以随便喝饮料，只要在目标序列那三个种子生成的时候按照我的方案就行</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;要是有好的方法来实现饮料跳过的功能也可以联系我</p>
-                <p>还有就是<strong>使用超级蝾螈</strong>不管有没有喝饮料都是产生的无饮料情况下的序列</p>
                     <select id="IDTarget1">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
@@ -776,53 +821,7 @@
                     </select>
             </div>
 
-            <div class = "wrapper">
-                <h3>请输入没有的饮料，将在搜索的时候避开这些饮料</h3>
-                <p>可以输入多个饮料，但是请不要重复输入</p>
-                    <select id="DrinkDontHave">
-                        <option value= '-1' >无</option>
-                        <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
-                        <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
-                        <option value= '3' >走速 / 提升人类状态移动速度</option>
-                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
-                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
-                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
-                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
-                        <option value= '8' >快速复活 / 缩短复活时间</option>
-                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
-                        <option value= '10' >副强 / 提升次要武器的性能</option>
-                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
-                        <option value= '12' >防爆 / 减轻次要武器影响</option>
-                        <option value= '13' >行动强化</option>
-                        <option value= '100' >禁用饮料</option>
-                    </select>
-                    <input  id="button" type="button" value="添加" onclick="AddTable();">
-                    <table class = "table2", id="drinktable"> <head> <tr> <td> 没有的饮料券 </td> <td>  操作  </td> </tr></head> </table>
-            </div>
 
-            <div class = "wrapper">
-            <h3>请输入想用来缩短搜索序列的饮料</h3>
-            <p>目标序列之前的序列可以使用氪多余的饮料的方法跳过某些种子，请选择使用什么饮料跳过：</p>
-            <p><strong>注意</strong>：此功能不会影响到全技能距离对比表，预计使用此功能平均可减少35%的序列长度</p>
-            <select id="DrinkJump">
-                <option value= '-1' >不使用饮料跳过</option>
-                <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
-                <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
-                <option value= '3' >走速 / 提升人类状态移动速度</option>
-                <option value= '4' >游速 / 提升鱿鱼游动速度</option>
-                <option value= '5' >大招减量 / 提升特殊武器增加量</option>
-                <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
-                <option value= '7' >大招增强 / 提升特殊武器的性能</option>
-                <option value= '8' >快速复活 / 缩短复活时间</option>
-                <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
-                <option value= '10' >副强 / 提升次要武器的性能</option>
-                <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
-                <option value= '12' >防爆 / 减轻次要武器影响</option>
-                <option value= '13' >行动强化</option>
-            </select>
-            </div>
             <div class = "wrapper">
             <p>要是没有输出，说明在40步以内找不到对应序列，建议放弃</p>
             <p>输出的方案并不唯一，按照消耗饮料券的从多到少显示最少步骤的方案，最多可能有四个方案</p>
