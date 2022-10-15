@@ -387,13 +387,18 @@
                                 tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
                                 tab += '<tr><th colspan = "3">' + '该饮料是为了缩短序列，请保持饮料状态直到下次提示' + '</td> </tr>';
                                 var tempseed = copyobj(Seed);
+                                //var tempseedbefor = copyobj(Seed);
                                 for(let temp = 0; temp < OriginStep + BranceStep + 2; temp++){
                                     tempseed.GetNextAbility(drinkjump);
-                                    if(tempseed.Seed == ResStep[OriginStep + BranceStep].Seed){
+                                    if(tempseed.Seed == ResStep[OriginStep + BranceStep].Seed && tempseed.Ability == ResStep[OriginStep + BranceStep].Ability){
                                         tempjudge = temp;
                                         //alert(tempjudge + ' ' + tempseed.Seed.toString(16) + ' ' + ResStep[OriginStep + BranceStep].Seed.toString(16));
                                         break;
+                                    }else if(tempseed.Ability == ResStep[OriginStep + BranceStep].Ability){
+                                        tempjudge = temp - BranceStep - 1;
+                                        judgejudge = 2;
                                     }
+                                    //tempseedbefor = copyobj(temps)
                                 }
                                 //alert(tempjudge);
                                 //alert('yes' + tempjudge + '  0x'+ ResStep[OriginStep + BranceStep].Seed.toString(16) + '  ' + temp);
@@ -418,12 +423,34 @@
                                     tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
+                                if(judgejudge == 2){
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
+                                    tab += '<tr>';
+                                    tab += "<td >" + (tempjudge + 1) + "</td>";
+                                    tab += "<td >" +"<img src = 'icon/skill/" + ResStep[OriginStep - 1].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[OriginStep - 1].Ability] + "</td>";
+                                    tab += "<td >0x" + ResStep[OriginStep - 1].Seed.toString(16) + "</td>";
+                                    tab += '</tr>';
+
+
+                                    if(CostNum[1] > -1 && CostNum[1] < 14){
+                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
+                                    }
+                                    for(let temp =0; temp < BranceStep; temp++){
+                                        tab += '<tr>';
+                                        tempjudge ++;
+                                        tab += "<td >" + (tempjudge + 1) + "</td>";
+                                        tab += "<td >" +"<img src = 'icon/skill/" + ResStep[temp + OriginStep].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[temp + OriginStep].Ability] + "</td>";
+                                        tab += "<td >0x" + ResStep[temp + OriginStep].Seed.toString(16) + "</td>";
+                                        tab += '</tr>';
+                                    }
+                                    tempjudge++;
+                                }
                                 if(judgejudge == 1){
                                     tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                 }else if(CostNum[1] < 0 || CostNum[1] > 13){
                                     tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                 }
-                                if(CostNum[1] > -1 && CostNum[1] < 14){
+                                if(CostNum[1] > -1 && CostNum[1] < 14 && judgejudge != 2){
                                     tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                 }
 
@@ -744,6 +771,7 @@
             <h3>请输入想用来缩短搜索序列的饮料</h3>
             <p>目标序列之前的序列可以使用氪多余的饮料的方法跳过某些种子，请选择使用什么饮料跳过：</p>
             <p><strong>注意</strong>：此功能不会影响到全技能距离对比表，预计使用此功能平均可减少35%的序列长度</p>
+            <p><strong>注意</strong>：此功能可能还有bug,使用之前请一定要去lean大佬的网站<strong>验证一下</strong></p>
             <select id="DrinkJump">
                 <option value= '-1' >不使用饮料跳过</option>
                 <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
