@@ -386,6 +386,7 @@
                                 tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
                                 tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
                                 tab += '<tr><th colspan = "3">' + '该饮料是为了缩短序列，请保持饮料状态直到下次提示' + '</td> </tr>';
+                                tab += '<tr><th colspan = "3">' + '此功能可能还有bug，请一定要在lean的网站上验证一下' + '</td> </tr>';
                                 var tempseed = copyobj(Seed);
                                 //var tempseedbefor = copyobj(Seed);
                                 for(let temp = 0; temp < OriginStep + BranceStep + 2; temp++){
@@ -394,9 +395,17 @@
                                         tempjudge = temp;
                                         //alert(tempjudge + ' ' + tempseed.Seed.toString(16) + ' ' + ResStep[OriginStep + BranceStep].Seed.toString(16));
                                         break;
+<<<<<<< HEAD
+                                    }else if(tempseed.Seed == ResStep[OriginStep + BranceStep].Seed){
+                                        tempjudge = temp - BranceStep ;
+                                        //alert(tempjudge);
+                                        judgejudge = 2;
+                                        break;
+=======
                                     }else if(tempseed.Ability == ResStep[OriginStep + BranceStep].Ability){
                                         tempjudge = temp - BranceStep - 1;
                                         judgejudge = 2;
+>>>>>>> 88742ed2c5caea7d1955f246d0a133e1479cdd49
                                     }
                                     //tempseedbefor = copyobj(temps)
                                 }
