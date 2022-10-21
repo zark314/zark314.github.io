@@ -1,49 +1,49 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>噴噴噴技能序列搜索器</title>
+        <title>喷喷喷技能序列搜索器</title>
         <link rel="icon" href="icon/star.ico">
 	</head>
     <script>
         var MAX_STEP = 30;
         var BrandName = [
-        "戰鬥魷魚 / SquidForce",
-        "鋼鐵先鋒 / Zink",
+        "战斗鱿鱼 / SquidForce",
+        "钢铁先锋 / Zink",
         "海月 / Krak-On",
-        "羅肯貝格 / Rockenberg",
-        "澤酷 / Zekko",
-        "鍛品 / Forge",
+        "罗肯贝格 / Rockenberg",
+        "泽酷 / Zekko",
+        "锻品 / Forge",
         "暖流 / Firefin",
         "帆立 / Skalop",
-        "寺門 / Splash Mob",
-        "時雨 / Inkline",
+        "寺门 / Splash Mob",
+        "时雨 / Inkline",
         "艾洛眼 / Tentatek",
         "暇古 / Takoroka",
-        "無法無天 / Annaki",
-        "魷皇 / Enperry",
-        "劍尖魷 / Toni Kensa",
-        "散壽司 / Barazushi",
-        "七輪 / Emberz",
-        "熊先生商會 / Grizzco",
-        "魚幹製造 / Cuttlegear",
+        "无法无天 / Annaki",
+        "鱿皇 / Enperry",
+        "剑尖鱿 / Toni Kensa",
+        "散寿司 / Barazushi",
+        "七轮 / Emberz",
+        "熊先生商会 / Grizzco",
+        "鱼干制造 / Cuttlegear",
         "amiibo"
         ];
 
         var AbilityName = [
         "主省 / 提升墨汁效率(主要武器)",
         "副省 / 提升墨汁效率(次要武器)",
-        "墨回 / 提升墨汁槽的回復速度",
-        "走速 / 提升人類狀態移動速度",
-        "遊速 / 提升魷魚遊動速度",
-        "大招減量 / 提升特殊武器增加量",
-        "sp死亡減輕 / 降低特殊武器減少量",
-        "大招增強 / 提升特殊武器的性能",
-        "快速復活 / 縮短復活時間",
-        "超級跳 / 縮短超級跳躍的時間",
-        "副強 / 提升次要武器的性能",
-        "安全鞋 / 減輕對手墨汁影響",
-        "防爆 / 減輕次要武器影響",
-        "行動強化"
+        "墨回 / 提升墨汁槽的回复速度",
+        "走速 / 提升人类状态移动速度",
+        "游速 / 提升鱿鱼游动速度",
+        "大招减量 / 提升特殊武器增加量",
+        "sp死亡减轻 / 降低特殊武器减少量",
+        "大招增强 / 提升特殊武器的性能",
+        "快速复活 / 缩短复活时间",
+        "超级跳 / 缩短超级跳跃的时间",
+        "副强 / 提升次要武器的性能",
+        "安全鞋 / 减轻对手墨汁影响",
+        "防爆 / 减轻次要武器影响",
+        "行动强化"
         ];
         var TargetCode = new Array(3);
         var BrandTend = [11, 0, 9, 8, 4, 12, 3, 4, 6, 5, 7, 1, 1, 2, 8, 6, 0, 3, 12, 13, 
@@ -286,17 +286,17 @@
 
                                 if(CostNum[1] > -1 && CostNum[1] < 14){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]] + ' 飲料';
+                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 if(CostNum[2] > -1 && CostNum[2] < 14 && CostNum[2] != CostNum[1]){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[2]] + ' 飲料';
+                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[2]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 if(CostNum[3] > -1 && CostNum[3] < 14 && CostNum[2] != CostNum[3]){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[3]] + ' 飲料';
+                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[3]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 // var newtd = document.createElement("td");
@@ -317,7 +317,7 @@
                                 IDtable0  = document.getElementById('IDtable' + tablenum);
                                 tablenum ++;
                                 var tab='<table class = "table" >'
-                                tab = tab + "<thead><tr> <td>編號</td><td >技能</td><td >種子</td></tr></thead><tbody>"
+                                tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
                                 
                                 for(let temp = 0; temp < OriginStep; temp++){
                                     tab += '<tr>';
@@ -328,7 +328,7 @@
                                 }
 
                                 if(CostNum[1] >-1 && CostNum[1] < 14){
-                                        tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]]  + ' 飲料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]]  + ' 饮料' + '</td> </tr>';
                                 }
 
                                 for(let temp = OriginStep; temp < OriginStep + BranceStep; temp++){
@@ -338,7 +338,7 @@
                                     tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
-                                tab += '<tr><th colspan = "3">' + "接下來就是目標序列，0.3的記得洗衣服，0.2的記得打孔" + '</th> </tr>'
+                                tab += '<tr><th colspan = "3">' + "接下来就是目标序列，0.3的记得洗衣服，0.2的记得打孔" + '</th> </tr>'
 
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 1) + "</td>";
@@ -348,11 +348,11 @@
 
                                 if(CostNum[2] != CostNum[1]){
                                     if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] != -1 && CostNum[1] != 14))
-                                        tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
                                         tab = tab;
                                     }else
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 飲料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 2) + "</td>";
@@ -362,11 +362,11 @@
                                 if(TargetCodeNum(TargetCode) == 3){
                                     if(CostNum[3] != CostNum[2]){
                                         if(CostNum[3] == -1 || CostNum[3] == 14 &&(CostNum[2] != -1 && CostNum[2] != 14))
-                                            tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                         else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
                                             tab = tab;
                                         }else
-                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 飲料' + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (OriginStep + BranceStep + 3) + "</td>";
@@ -383,10 +383,10 @@
                                 var tab='<table class = "table" >';
                                 var tempjudge = -1;
                                 var judgejudge = -1;
-                                tab = tab + "<thead><tr> <td>編號</td><td >技能</td><td >種子</td></tr></thead><tbody>"
-                                tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 飲料' + '</td> </tr>';
-                                tab += '<tr><th colspan = "3">' + '該飲料是為了縮短序列，請保持飲料狀態直到下次提示' + '</td> </tr>';
-                                tab += '<tr><th colspan = "3">' + '此功能可能還有bug，請一定要在lean的網站上驗證一下' + '</td> </tr>';
+                                tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
+                                tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
+                                tab += '<tr><th colspan = "3">' + '该饮料是为了缩短序列，请保持饮料状态直到下次提示' + '</td> </tr>';
+                                tab += '<tr><th colspan = "3">' + '此功能可能还有bug，请一定要在lean的网站上验证一下' + '</td> </tr>';
                                 var tempseed = copyobj(Seed);
                                 //var tempseedbefor = copyobj(Seed);
                                 for(let temp = 0; temp < OriginStep + BranceStep + 2; temp++){
@@ -432,7 +432,7 @@
 
 
                                 if(judgejudge == 2){
-                                    tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     tab += '<tr>';
                                     tab += "<td >" + (tempjudge + 1) + "</td>";
                                     tab += "<td >" +"<img src = 'icon/skill/" + ResStep[OriginStep - 1].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[OriginStep - 1].Ability] + "</td>";
@@ -441,7 +441,7 @@
 
 
                                     if(CostNum[1] > -1 && CostNum[1] < 14){
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 飲料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                     }
                                     for(let temp =0; temp < BranceStep; temp++){
                                         tab += '<tr>';
@@ -454,9 +454,9 @@
                                     tempjudge++;
                                 }
                                 if(judgejudge == 1){
-                                    tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                 }else if(CostNum[1] < 0 || CostNum[1] > 13){
-                                    tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                    tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                 }
                                 
 
@@ -470,10 +470,10 @@
                                 }
                                 tempjudge = tempjudge + OriginStep - tempt - 1;
                                 if(CostNum[1] > -1 && CostNum[1] < 14 && judgejudge != 2){
-                                    tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 飲料' + '</td> </tr>';
+                                    tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                 }
 
-                                tab += '<tr><th colspan = "3">' + "接下來就是目標序列，0.3的記得洗衣服，0.2的記得打孔" + '</th> </tr>'
+                                tab += '<tr><th colspan = "3">' + "接下来就是目标序列，0.3的记得洗衣服，0.2的记得打孔" + '</th> </tr>'
                                 tab += '<tr>';
                                 tab += "<td >" + (tempjudge + 1) + "</td>";
                                 tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep].Ability + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
@@ -481,11 +481,11 @@
                                 tab += '</tr>';
                                 if(CostNum[2] != CostNum[1]){
                                     if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] != -1 && CostNum[1] != 14))
-                                        tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
                                         tab = tab;
                                     }else
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 飲料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
                                 tab += "<td >" + (tempjudge + 2) + "</td>";
@@ -495,11 +495,11 @@
                                 if(TargetCodeNum(TargetCode) == 3){
                                     if(CostNum[3] != CostNum[2]){
                                         if(CostNum[3] == -1 || CostNum[3] == 14 &&(CostNum[2] != -1 && CostNum[2] != 14))
-                                            tab += '<tr><th colspan = "3">' + "取消飲料效果" + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                         else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
                                             tab = tab;
                                         }else
-                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 飲料' + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (tempjudge + 3) + "</td>";
@@ -532,27 +532,27 @@
             var newtd = document.createElement("td");
 
             if(drinkdonthave == -1){
-                alert("請輸入飲料券");
+                alert("请输入饮料券");
                 return ;
             } 
 
             if(drinkdonthave == 100){
                 for(let i = 0; i< 14;i++){
                     if(ddrinklist[i] == 1){
-                        alert("選擇禁用飲料請把其他所有飲料刪除");
+                        alert("选择禁用饮料请把其他所有饮料删除");
                         return;
                     }
                 }
                 for(let i = 0; i < 14;i++){
                     ddrinklist[i] = 1;
                 }
-                newtd.innerHTML = '飲料已禁用';
+                newtd.innerHTML = '饮料已禁用';
                 newtr.appendChild(newtd);
                 MainFunction();
                 var newtd = document.createElement("td");
                 var delbtn = document.createElement("a");
                 
-                delbtn.innerText = ' 刪除 ';
+                delbtn.innerText = ' 删除 ';
                 delbtn.href = "#";
                 delbtn.onclick = function (){
                     for(let i = 0 ; i < 15; i++){
@@ -570,7 +570,7 @@
             if(ddrinklist[drinkdonthave] == 0){
                 ddrinklist[drinkdonthave] = 1;
             }else{
-                alert("請不要輸入相同飲料");
+                alert("请不要输入相同饮料");
                 return;
             }
 
@@ -581,14 +581,14 @@
             var newtd = document.createElement("td");
             var delbtn = document.createElement("a");
             MainFunction();
-            delbtn.innerText = ' 刪除 ';
+            delbtn.innerText = ' 删除 ';
             delbtn.href = "#";
             delbtn.onclick = function (){
                 for(let temp = 0;temp < 14;temp ++){
-                    if(this.parentNode.parentNode.innerHTML == "<td>" + AbilityName[temp] + '</td><td><a href="#"> 刪除 </a></td>'){
+                    if(this.parentNode.parentNode.innerHTML == "<td>" + AbilityName[temp] + '</td><td><a href="#"> 删除 </a></td>'){
                         ddrinklist[temp] = 0;
                     }
-                    if(this.parentNode.parentNode.innerHTML == "<td>" + '禁用飲料' + '</td><td><a href="#"> 刪除 </a></td>'){
+                    if(this.parentNode.parentNode.innerHTML == "<td>" + '禁用饮料' + '</td><td><a href="#"> 删除 </a></td>'){
                         for(let i = 0; i< 14; i++){
                             ddrinklist[temp] = 1;
                         }
@@ -625,7 +625,7 @@
 
                 IDtable0  =document.getElementById('IDtable0');
                 var tab='<table class = "table"  id = "table0">';
-                tab += "<thead> <tr> <td >0.3的技能</td><td >所需步驟</td><td >所需飲料數量</td><td >飲料1</td><td >飲料2</td><td >飲料3</td></tr> </thead><tbody></tbody>";
+                tab += "<thead> <tr> <td >0.3的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td><td >饮料3</td></tr> </thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -637,7 +637,7 @@
                 
                 IDtable0  =document.getElementById('IDtable1');
                 var tab='<table class = "table"  id = "table1">';
-                tab += "<thead> <tr> <td >0.2的技能</td><td >所需步驟</td><td >所需飲料數量</td><td >飲料1</td><td >飲料2</td> </tr> </thead><tbody></tbody>";
+                tab += "<thead> <tr> <td >0.2的技能</td><td >所需步骤</td><td >所需饮料数量</td><td >饮料1</td><td >饮料2</td> </tr> </thead><tbody></tbody>";
                 tab += '</table>';
                 IDtable0.innerHTML = tab;
                 for(let temp = 0; temp < 14; temp++){
@@ -705,7 +705,7 @@
             margin-top: 10px;
         }
         table tr.header, table tr:hover {
-            /* 表頭及鼠標移動過 tr 時添加背景 */
+            /* 表头及鼠标移动过 tr 时添加背景 */
             background-color: #f1f1f1;
         }
         </style>
@@ -715,47 +715,47 @@
         
         <div class = "content">
             <div class="wrapper">
-            <h1>噴噴噴技能序列搜索器</h1>
-                <a href="index.html">切換简体中文</a>
-                <p>歡迎使用本網站，這裏有<strong>教程與問過的問題</strong>，有問題可以參考一下，如果還無法解決可以聯系我：<a href="Tutorial.html">教程與更新公告</a></p>
-				<p><strong><u>註意：請一定要看一下各個選項的介紹與註意事項，並且使用方案之前請去lean大佬的網站驗證一下路線，有bug請及時反饋</u></strong></p>
-                <p>此網站是用來輔助尋找自己想要的技能的</p>
-                <p>此網站由我一人完成，並且我之前並沒有學過JS，如有bug實屬正常</p>
-                <p>如果有bug或有建議請反饋給我qq:1464243589</p>
-                <p>在使用我的方案之前請去lean大佬的網站復查一下</p>
-                <p>ps.lean大佬的網站也增加了搜索目標序列的功能，結果和我的是差不多的，可以去試試</p>
+            <h1>喷喷喷技能序列搜索器</h1>
+                <a href="index_fcn.html">切换繁体中文</a>
+                <p>欢迎使用本网站，这里有<strong>教程与问过的问题</strong>，有问题可以参考一下，如果还无法解决可以联系我：<a href="Tutorial.html">教程与更新公告</a></p>
+				<p><strong><u>注意：请一定要看一下各个选项的介绍与注意事项，并且使用方案之前请去lean大佬的网站验证一下路线，有bug请及时反馈</u></strong></p>
+                <p>此网站是用来辅助寻找自己想要的技能的</p>
+                <p>此网站由我一人完成，并且我之前并没有学过JS，如有bug实属正常</p>
+                <p>如果有bug或有建议请反馈给我qq:1464243589</p>
+                <p>在使用我的方案之前请去lean大佬的网站复查一下</p>
+                <p>ps.lean大佬的网站也增加了搜索目标序列的功能，结果和我的是差不多的，可以去试试</p>
 		    </div>
 
             <div class = "wrapper">
-            <h2>請輸入衣服種子</h2>
-                <p>求種子的網站在<a href="https://leanny.github.io/splat3seedchecker/#/seedrecover">這裏</a></p>
+            <h2>请输入衣服种子</h2>
+                <p>求种子的网站在<a href="https://leanny.github.io/splat3seedchecker/#/seedrecover">这里</a></p>
                 <input type = "text" id = "IDSeed" value = "0x915cfc31"/>
             </div>
 
             <form method="post" action=" ">
                 <div class = "wrapper">
-                <h2>請選擇衣服品牌</h2>
+                <h2>请选择衣服品牌</h2>
                 <p>
                   <select id="IDClothes">
-                      <option value= '0' selected label="戰鬥魷魚 / SquidForce" class = "ability0" >戰鬥魷魚 / SquidForce</option>
-                      <option value= '1' label="鋼鐵先鋒 / Zink" class = "ability0">鋼鐵先鋒 / Zink</option>
+                      <option value= '0' selected label="战斗鱿鱼 / SquidForce" class = "ability0" >战斗鱿鱼 / SquidForce</option>
+                      <option value= '1' label="钢铁先锋 / Zink" class = "ability0">钢铁先锋 / Zink</option>
                       <option value= '2' label="海月 / Krak-On">海月 / Krak-On</option>
-                      <option value= '3' label="羅肯貝格 / Rockenberg">羅肯貝格 / Rockenberg</option>
-                      <option value= '4' label="澤酷 / Zekko">澤酷 / Zekko</option>
-                      <option value= '5' label="鍛品 / Forge">鍛品 / Forge</option>
+                      <option value= '3' label="罗肯贝格 / Rockenberg">罗肯贝格 / Rockenberg</option>
+                      <option value= '4' label="泽酷 / Zekko">泽酷 / Zekko</option>
+                      <option value= '5' label="锻品 / Forge">锻品 / Forge</option>
                       <option value= '6' label="暖流 / Firefin">暖流 / Firefin</option>
                       <option value= '7' label="帆立 / Skalop">帆立 / Skalop</option>
-                      <option value= '8' label="寺門 / Splash Mob">寺門 / Splash Mob</option>
-                      <option value= '9' label="時雨 / Inkline">時雨 / Barazushi</option>
+                      <option value= '8' label="寺门 / Splash Mob">寺门 / Splash Mob</option>
+                      <option value= '9' label="时雨 / Inkline">时雨 / Barazushi</option>
                       <option value= '10' label="艾洛眼 / Tentatek">艾洛眼 / Tentatek</option>
                       <option value= '11' label="暇古 / Takoroka">暇古 / Takoroka</option>
-                      <option value= '12' label="無法無天 / Annaki">無法無天 / Annaki</option>
-                      <option value= '13' label="魷皇 / Enperry">魷皇 / Enperry</option>
-                      <option value= '14' label="劍尖魷 / Toni Kensa">劍尖魷 / Toni Kensa</option>
-                      <option value= '15' label="散壽司 / Barazushi">散壽司 / Barazushi</option>
-                      <option value= '16' label="七輪 / Emberz">七輪 / Emberz</option>
-                      <option value= '17' label="熊先生商會 / Grizzco">熊先生商會 / Grizzco</option>
-                      <option value= '18' label="魚幹製造 / Cuttlegear">魚幹製造 / Cuttlegear</option>
+                      <option value= '12' label="无法无天 / Annaki">无法无天 / Annaki</option>
+                      <option value= '13' label="鱿皇 / Enperry">鱿皇 / Enperry</option>
+                      <option value= '14' label="剑尖鱿 / Toni Kensa">剑尖鱿 / Toni Kensa</option>
+                      <option value= '15' label="散寿司 / Barazushi">散寿司 / Barazushi</option>
+                      <option value= '16' label="七轮 / Emberz">七轮 / Emberz</option>
+                      <option value= '17' label="熊先生商会 / Grizzco">熊先生商会 / Grizzco</option>
+                      <option value= '18' label="鱼干制造 / Cuttlegear">鱼干制造 / Cuttlegear</option>
                       <option value= '19' label="amiibo">amiibo</option>
                   </select>
                 </p>
@@ -763,117 +763,117 @@
             </form>
 
             <div class = "wrapper">
-                <h3>請輸入沒有的飲料，將在搜索的時候避開這些飲料</h3>
-                <p>可以輸入多個飲料，但是請不要重復輸入</p>
+                <h3>请输入没有的饮料，将在搜索的时候避开这些饮料</h3>
+                <p>可以输入多个饮料，但是请不要重复输入</p>
                     <select id="DrinkDontHave">
-                        <option value= '-1' >無</option>
+                        <option value= '-1' >无</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
                         <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                        <option value= '2' >墨回 / 提升墨汁槽的回復速度</option>
-                        <option value= '3' >走速 / 提升人類狀態移動速度</option>
-                        <option value= '4' >遊速 / 提升魷魚遊動速度</option>
-                        <option value= '5' >大招減量 / 提升特殊武器增加量</option>
-                        <option value= '6' >sp死亡減輕 / 降低特殊武器減少量</option>
-                        <option value= '7' >大招增強 / 提升特殊武器的性能</option>
-                        <option value= '8' >快速復活 / 縮短復活時間</option>
-                        <option value= '9' >超級跳 / 縮短超級跳躍的時間</option>
-                        <option value= '10' >副強 / 提升次要武器的性能</option>
-                        <option value= '11' >安全鞋 / 減輕對手墨汁影響</option>
-                        <option value= '12' >防爆 / 減輕次要武器影響</option>
-                        <option value= '13' >行動強化</option>
-                        <option value= '100' >禁用飲料</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
+                        <option value= '100' >禁用饮料</option>
                     </select>
                     <input  id="button" type="button" value="添加" onclick="AddTable();">
-                    <table class = "table2", id="drinktable"> <head> <tr> <td> 沒有的飲料券 </td> <td>  操作  </td> </tr></head> </table>
+                    <table class = "table2", id="drinktable"> <head> <tr> <td> 没有的饮料券 </td> <td>  操作  </td> </tr></head> </table>
             </div>
 
             <div class = "wrapper">
-            <h3>請輸入想用來縮短搜索序列的飲料</h3>
-            <p>目標序列之前的序列可以使用氪多余的飲料的方法跳過某些種子，請選擇使用什麽飲料跳過：</p>
-            <p><strong>註意</strong>：海螺刷新技能是無飲料影響，因此使用本功能只能手刷，並且盡量保持在方案提示的範圍內每個技能生成的時候都處於飲料期間，有自己的方案規劃請自行去lean的網站驗證，並且飲料只有在技能生成的時候有作用，前面的經驗積累過程中無影響</p>
-            <p><strong>註意</strong>：此功能不會影響到全技能距離對比表，預計使用此功能平均可減少35%的序列長度</p>
-            <p><strong>註意</strong>：此功能可能還有bug,使用之前請一定要去lean大佬的網站<strong>驗證一下</strong></p>
+            <h3>请输入想用来缩短搜索序列的饮料</h3>
+            <p>目标序列之前的序列可以使用氪多余的饮料的方法跳过某些种子，请选择使用什么饮料跳过：</p>
+            <p><strong>注意</strong>：海螺刷新技能是无饮料影响，因此使用本功能只能手刷，并且尽量保持在方案提示的范围内每个技能生成的时候都处于饮料期间，有自己的方案规划请自行去lean的网站验证，并且饮料只有在技能生成的时候有作用，前面的经验积累过程中无影响</p>
+            <p><strong>注意</strong>：此功能不会影响到全技能距离对比表，预计使用此功能平均可减少35%的序列长度</p>
+            <p><strong>注意</strong>：此功能可能还有bug,使用之前请一定要去lean大佬的网站<strong>验证一下</strong></p>
             <select id="DrinkJump">
-                <option value= '-1' >不使用飲料跳過</option>
+                <option value= '-1' >不使用饮料跳过</option>
                 <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
                 <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                <option value= '2' >墨回 / 提升墨汁槽的回復速度</option>
-                <option value= '3' >走速 / 提升人類狀態移動速度</option>
-                <option value= '4' >遊速 / 提升魷魚遊動速度</option>
-                <option value= '5' >大招減量 / 提升特殊武器增加量</option>
-                <option value= '6' >sp死亡減輕 / 降低特殊武器減少量</option>
-                <option value= '7' >大招增強 / 提升特殊武器的性能</option>
-                <option value= '8' >快速復活 / 縮短復活時間</option>
-                <option value= '9' >超級跳 / 縮短超級跳躍的時間</option>
-                <option value= '10' >副強 / 提升次要武器的性能</option>
-                <option value= '11' >安全鞋 / 減輕對手墨汁影響</option>
-                <option value= '12' >防爆 / 減輕次要武器影響</option>
-                <option value= '13' >行動強化</option>
+                <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                <option value= '3' >走速 / 提升人类状态移动速度</option>
+                <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                <option value= '8' >快速复活 / 缩短复活时间</option>
+                <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                <option value= '10' >副强 / 提升次要武器的性能</option>
+                <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                <option value= '12' >防爆 / 减轻次要武器影响</option>
+                <option value= '13' >行动强化</option>
             </select>
             </div>
 
             <div class = "wrapper">
-                <h3>請輸入目標序列</h3>
-                <p>可以只輸入兩個目標序列，需要將最後一個位置選<strong>未知</strong>，輸入0.2的目的是在0.2出來<strong>之前用10碎片打技能</strong></p>
-                <p><strong>三個序列位置都為未知</strong>時將輸出所有技能的0.3和0.2消耗</p>
-                <p>ps.增加了<strong>無序搜索</strong>的功能，會從序列排列組合的結果中挑選最優解</p>
+                <h3>请输入目标序列</h3>
+                <p>可以只输入两个目标序列，需要将最后一个位置选<strong>未知</strong>，输入0.2的目的是在0.2出来<strong>之前用10碎片打技能</strong></p>
+                <p><strong>三个序列位置都为未知</strong>时将输出所有技能的0.3和0.2消耗</p>
+                <p>ps.增加了<strong>无序搜索</strong>的功能，会从序列排列组合的结果中挑选最优解</p>
                     <select id="IDTarget1">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
                         <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                        <option value= '2' >墨回 / 提升墨汁槽的回復速度</option>
-                        <option value= '3' >走速 / 提升人類狀態移動速度</option>
-                        <option value= '4' >遊速 / 提升魷魚遊動速度</option>
-                        <option value= '5' >大招減量 / 提升特殊武器增加量</option>
-                        <option value= '6' >sp死亡減輕 / 降低特殊武器減少量</option>
-                        <option value= '7' >大招增強 / 提升特殊武器的性能</option>
-                        <option value= '8' >快速復活 / 縮短復活時間</option>
-                        <option value= '9' >超級跳 / 縮短超級跳躍的時間</option>
-                        <option value= '10' >副強 / 提升次要武器的性能</option>
-                        <option value= '11' >安全鞋 / 減輕對手墨汁影響</option>
-                        <option value= '12' >防爆 / 減輕次要武器影響</option>
-                        <option value= '13' >行動強化</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
                     </select>
                     <select id="IDTarget2">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
                         <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                        <option value= '2' >墨回 / 提升墨汁槽的回復速度</option>
-                        <option value= '3' >走速 / 提升人類狀態移動速度</option>
-                        <option value= '4' >遊速 / 提升魷魚遊動速度</option>
-                        <option value= '5' >大招減量 / 提升特殊武器增加量</option>
-                        <option value= '6' >sp死亡減輕 / 降低特殊武器減少量</option>
-                        <option value= '7' >大招增強 / 提升特殊武器的性能</option>
-                        <option value= '8' >快速復活 / 縮短復活時間</option>
-                        <option value= '9' >超級跳 / 縮短超級跳躍的時間</option>
-                        <option value= '10' >副強 / 提升次要武器的性能</option>
-                        <option value= '11' >安全鞋 / 減輕對手墨汁影響</option>
-                        <option value= '12' >防爆 / 減輕次要武器影響</option>
-                        <option value= '13' >行動強化</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
                     </select>
                     <select id="IDTarget3">
                         <option value= '-1' >未知</option>
                         <option value= '0' >主省 / 提升墨汁效率(主要武器)</option>
                         <option value= '1' >副省 / 提升墨汁效率(次要武器)</option>
-                        <option value= '2' >墨回 / 提升墨汁槽的回復速度</option>
-                        <option value= '3' >走速 / 提升人類狀態移動速度</option>
-                        <option value= '4' >遊速 / 提升魷魚遊動速度</option>
-                        <option value= '5' >大招減量 / 提升特殊武器增加量</option>
-                        <option value= '6' >sp死亡減輕 / 降低特殊武器減少量</option>
-                        <option value= '7' >大招增強 / 提升特殊武器的性能</option>
-                        <option value= '8' >快速復活 / 縮短復活時間</option>
-                        <option value= '9' >超級跳 / 縮短超級跳躍的時間</option>
-                        <option value= '10' >副強 / 提升次要武器的性能</option>
-                        <option value= '11' >安全鞋 / 減輕對手墨汁影響</option>
-                        <option value= '12' >防爆 / 減輕次要武器影響</option>
-                        <option value= '13' >行動強化</option>
+                        <option value= '2' >墨回 / 提升墨汁槽的回复速度</option>
+                        <option value= '3' >走速 / 提升人类状态移动速度</option>
+                        <option value= '4' >游速 / 提升鱿鱼游动速度</option>
+                        <option value= '5' >大招减量 / 提升特殊武器增加量</option>
+                        <option value= '6' >sp死亡减轻 / 降低特殊武器减少量</option>
+                        <option value= '7' >大招增强 / 提升特殊武器的性能</option>
+                        <option value= '8' >快速复活 / 缩短复活时间</option>
+                        <option value= '9' >超级跳 / 缩短超级跳跃的时间</option>
+                        <option value= '10' >副强 / 提升次要武器的性能</option>
+                        <option value= '11' >安全鞋 / 减轻对手墨汁影响</option>
+                        <option value= '12' >防爆 / 减轻次要武器影响</option>
+                        <option value= '13' >行动强化</option>
                     </select>
             </div>
 
 
             <div class = "wrapper">
-            <p>要是沒有輸出，說明在40步以內找不到對應序列，建議放棄</p>
-            <p>輸出的方案並不唯一，按照消耗飲料券的從多到少顯示最少步驟的方案，最多可能有四個方案</p>
+            <p>要是没有输出，说明在40步以内找不到对应序列，建议放弃</p>
+            <p>输出的方案并不唯一，按照消耗饮料券的从多到少显示最少步骤的方案，最多可能有四个方案</p>
             <input  id="button" type="button" value="生成方案" onclick="newtarget();MainFunction();">
             <div id = "IDtable0"></div>
             <div id = "IDtable1"></div>
