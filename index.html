@@ -405,11 +405,13 @@
                                 }
                                 //alert(tempjudge);
                                 //alert('yes' + tempjudge + '  0x'+ ResStep[OriginStep + BranceStep].Seed.toString(16) + '  ' + temp);
-                                if(tempjudge == -1){
+                                var tempt = OriginStep + BranceStep;
+                                while(tempjudge == -1){
+                                    tempt = tempt - 1;
                                     var tempseed = copyobj(Seed);
                                     for(let temp = 0; temp < OriginStep + BranceStep; temp++){
                                         tempseed.GetNextAbility(drinkjump);
-                                        if(tempseed.Seed == ResStep[OriginStep + BranceStep - 1].Seed){
+                                        if(tempseed.Seed == ResStep[tempt].Seed){
                                             tempjudge = temp + 1;
                                             judgejudge = 1;
                                             //alert(tempjudge);
@@ -417,6 +419,7 @@
                                         }
                                     }
                                 }
+
                                 var tempseed = copyobj(Seed);
                                 for(let temp = 0; temp < tempjudge; temp++){
                                     tempseed.GetNextAbility(drinkjump);
@@ -426,6 +429,8 @@
                                     tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
+
+
                                 if(judgejudge == 2){
                                     tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     tab += '<tr>';
@@ -453,6 +458,17 @@
                                 }else if(CostNum[1] < 0 || CostNum[1] > 13){
                                     tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                 }
+                                
+
+                                for(let temp = tempjudge; temp < tempjudge + OriginStep - tempt - 1; temp++){
+                                    tempseed.GetNextAbility(-1);
+                                    tab += '<tr>';
+                                    tab += "<td >" + (temp + 1) + "</td>";
+                                    tab += "<td >"+"<img src = 'icon/skill/" + tempseed.Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[tempseed.Ability]  + "</td>";
+                                    tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
+                                    tab += '</tr>';
+                                }
+                                tempjudge = tempjudge + OriginStep - tempt - 1;
                                 if(CostNum[1] > -1 && CostNum[1] < 14 && judgejudge != 2){
                                     tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                 }
