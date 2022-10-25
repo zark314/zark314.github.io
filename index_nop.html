@@ -270,7 +270,7 @@
                                 tbd.appendChild(newtr);
 
                                 var newtd = document.createElement("td");
-                                newtd.innerHTML =  "<img src = 'icon/skill/" + TargetCode[0] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[TargetCode[0]];
+                                newtd.innerHTML =   AbilityName[TargetCode[0]];
                                 newtr.appendChild(newtd);
                                 
                                 var newtd = document.createElement("td");
@@ -286,17 +286,17 @@
 
                                 if(CostNum[1] > -1 && CostNum[1] < 14){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]] + ' 饮料';
+                                    newtd.innerHTML =  AbilityName[CostNum[1]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 if(CostNum[2] > -1 && CostNum[2] < 14 && CostNum[2] != CostNum[1]){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[2]] + ' 饮料';
+                                    newtd.innerHTML =  AbilityName[CostNum[2]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 if(CostNum[3] > -1 && CostNum[3] < 14 && CostNum[2] != CostNum[3]){
                                     var newtd = document.createElement("td");
-                                    newtd.innerHTML = "<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " +AbilityName[CostNum[3]] + ' 饮料';
+                                    newtd.innerHTML =  AbilityName[CostNum[3]] + ' 饮料';
                                     newtr.appendChild(newtd);
                                 }
                                 // var newtd = document.createElement("td");
@@ -322,19 +322,19 @@
                                 for(let temp = 0; temp < OriginStep; temp++){
                                     tab += '<tr>';
                                     tab += "<td >" + (temp + 1) + "</td>";
-                                    tab += "<td >" +"<img src = 'icon/skill/" + ResStep[temp].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[temp].Ability] + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[temp].Ability] + "</td>";
                                     tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
 
                                 if(CostNum[1] >-1 && CostNum[1] < 14){
-                                        tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[1]]  + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '  + AbilityName[CostNum[1]]  + ' 饮料' + '</td> </tr>';
                                 }
 
                                 for(let temp = OriginStep; temp < OriginStep + BranceStep; temp++){
                                     tab += '<tr>';
                                     tab += "<td >" + (temp + 1) + "</td>";
-                                    tab += "<td >"+"<img src = 'icon/skill/" + ResStep[temp].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[temp].Ability]  + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[temp].Ability]  + "</td>";
                                     tab += "<td >0x" + ResStep[temp].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
@@ -342,7 +342,7 @@
 
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 1) + "</td>";
-                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep].Ability + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
                                 tab += "<td >0x" + ResStep[OriginStep + BranceStep].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
 
@@ -352,11 +352,11 @@
                                     else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
                                         tab = tab;
                                     }else
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
                                 tab += "<td >" + (OriginStep + BranceStep + 2) + "</td>";
-                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 1].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
                                 tab += "<td >0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
                                 if(TargetCodeNum(TargetCode) == 3){
@@ -366,11 +366,11 @@
                                         else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
                                             tab = tab;
                                         }else
-                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (OriginStep + BranceStep + 3) + "</td>";
-                                    tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 2].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
                                     tab += "<td >0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
@@ -384,7 +384,7 @@
                                 var tempjudge = -1;
                                 var judgejudge = -1;
                                 tab = tab + "<thead><tr> <td>编号</td><td >技能</td><td >种子</td></tr></thead><tbody>"
-                                tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + drinkjump + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
+                                tab += '<tr><th colspan = "3">' + '喝 ' + AbilityName[drinkjump] + ' 饮料' + '</td> </tr>';
                                 tab += '<tr><th colspan = "3">' + '该饮料是为了缩短序列，请保持饮料状态直到下次提示' + '</td> </tr>';
                                 tab += '<tr><th colspan = "3">' + '此功能可能还有bug，请一定要在lean的网站上验证一下' + '</td> </tr>';
                                 var tempseed = copyobj(Seed);
@@ -425,7 +425,7 @@
                                     tempseed.GetNextAbility(drinkjump);
                                     tab += '<tr>';
                                     tab += "<td >" + (temp + 1) + "</td>";
-                                    tab += "<td >"+"<img src = 'icon/skill/" + tempseed.Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[tempseed.Ability]  + "</td>";
+                                    tab += "<td >" + AbilityName[tempseed.Ability]  + "</td>";
                                     tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
@@ -435,19 +435,19 @@
                                     tab += '<tr><th colspan = "3">' + "取消饮料效果" + '</td> </tr>';
                                     tab += '<tr>';
                                     tab += "<td >" + (tempjudge + 1) + "</td>";
-                                    tab += "<td >" +"<img src = 'icon/skill/" + ResStep[OriginStep - 1].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[OriginStep - 1].Ability] + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[OriginStep - 1].Ability] + "</td>";
                                     tab += "<td >0x" + ResStep[OriginStep - 1].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
 
 
                                     if(CostNum[1] > -1 && CostNum[1] < 14){
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                     }
                                     for(let temp =0; temp < BranceStep; temp++){
                                         tab += '<tr>';
                                         tempjudge ++;
                                         tab += "<td >" + (tempjudge + 1) + "</td>";
-                                        tab += "<td >" +"<img src = 'icon/skill/" + ResStep[temp + OriginStep].Ability + ".png' style = 'width:25px;background-color:black;'> "+ AbilityName[ResStep[temp + OriginStep].Ability] + "</td>";
+                                        tab += "<td >" + AbilityName[ResStep[temp + OriginStep].Ability] + "</td>";
                                         tab += "<td >0x" + ResStep[temp + OriginStep].Seed.toString(16) + "</td>";
                                         tab += '</tr>';
                                     }
@@ -464,19 +464,19 @@
                                     tempseed.GetNextAbility(-1);
                                     tab += '<tr>';
                                     tab += "<td >" + (temp + 1) + "</td>";
-                                    tab += "<td >"+"<img src = 'icon/skill/" + tempseed.Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[tempseed.Ability]  + "</td>";
+                                    tab += "<td >" + AbilityName[tempseed.Ability]  + "</td>";
                                     tab += "<td >0x" + tempseed.Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
                                 tempjudge = tempjudge + OriginStep - tempt - 1;
                                 if(CostNum[1] > -1 && CostNum[1] < 14 && judgejudge != 2){
-                                    tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[1] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
+                                    tab += '<tr><th colspan = "3">' + '喝 '+ AbilityName[CostNum[1]] + ' 饮料' + '</td> </tr>';
                                 }
 
                                 tab += '<tr><th colspan = "3">' + "接下来就是目标序列，0.3的记得洗衣服，0.2的记得打孔" + '</th> </tr>'
                                 tab += '<tr>';
                                 tab += "<td >" + (tempjudge + 1) + "</td>";
-                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep].Ability + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep].Ability]  + "</td>";
                                 tab += "<td >0x" + ResStep[OriginStep + BranceStep].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
                                 if(CostNum[2] != CostNum[1]){
@@ -485,11 +485,11 @@
                                     else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[1] == -1 || CostNum[1] == 14)){
                                         tab = tab;
                                     }else
-                                        tab += '<tr><th colspan = "3">' + '喝 '+"<img src = 'icon/skill/" + CostNum[2] + ".png' style = 'width:25px;background-color:black;' > "+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
+                                        tab += '<tr><th colspan = "3">' + '喝 '+ AbilityName[CostNum[2]] + ' 饮料' + '</td> </tr>';
                                 }
                                 tab += '<tr>';
                                 tab += "<td >" + (tempjudge + 2) + "</td>";
-                                tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 1].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
+                                tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 1].Ability]  + "</td>";
                                 tab += "<td >0x" + ResStep[OriginStep + BranceStep + 1].Seed.toString(16) + "</td>";
                                 tab += '</tr>';
                                 if(TargetCodeNum(TargetCode) == 3){
@@ -499,11 +499,11 @@
                                         else if((CostNum[2] == -1 || CostNum[2] == 14) && (CostNum[3] == -1 || CostNum[3] == 14)){
                                             tab = tab;
                                         }else
-                                            tab += '<tr><th colspan = "3">' + '喝 ' +"<img src = 'icon/skill/" + CostNum[3] + ".png' style = 'width:25px;background-color:black;' > " + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
+                                            tab += '<tr><th colspan = "3">' + '喝 '  + AbilityName[CostNum[3]] + ' 饮料' + '</td> </tr>';
                                     }
                                     tab += '<tr>';
                                     tab += "<td >" + (tempjudge + 3) + "</td>";
-                                    tab += "<td >"+"<img src = 'icon/skill/" + ResStep[OriginStep + BranceStep + 2].Ability + ".png' style = 'width:25px;background-color:black;'> " + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
+                                    tab += "<td >" + AbilityName[ResStep[OriginStep + BranceStep + 2].Ability]  + "</td>";
                                     tab += "<td >0x" + ResStep[OriginStep + BranceStep + 2].Seed.toString(16) + "</td>";
                                     tab += '</tr>';
                                 }
@@ -716,8 +716,7 @@
         <div class = "content">
             <div class="wrapper">
             <h1>喷喷喷技能序列搜索器</h1>
-                <a href="index_fcn.html">切换繁体中文</a>
-                <a href="index_nop.html">切换无图片网站</a>
+                <a href="index.html">切换有图片网站</a>
                 <p>欢迎使用本网站，这里有<strong>教程与问过的问题</strong>，有问题可以参考一下，如果还无法解决可以联系我：<a href="Tutorial.html">教程与更新公告</a></p>
 				<p><strong><u>注意：请一定要看一下各个选项的介绍与注意事项，并且使用方案之前请去lean大佬的网站验证一下路线，有bug请及时反馈</u></strong></p>
                 <p>此网站是用来辅助寻找自己想要的技能的</p>
