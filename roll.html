@@ -5,7 +5,7 @@
         <link rel="icon" href="icon/star.ico">
 	</head>
     <script>
-        
+        var rollnum = 1;
         var num_weapons = [2, 2, 13, 6, 7, 4, 2, 5, 5, 5, 3];
         var roll1 = [1, 1];
         var roll2 = [1, 1];
@@ -189,19 +189,30 @@
                 }
             }
 
-            var team1 = new Array(10);
-            var team2 = new Array(10);
-            wwnum = parseInt(document.getElementById('wnum').value);
-            for(let temp = 0; temp < wwnum;temp++){
+            var tabtoadd = document.getElementById('resulttable');
+            var newtr = document.createElement("tr");
+            var newtd = document.createElement("td");
+            tabtoadd.appendChild(newtr);
+            newtd.innerHTML = '这是第 ' + rollnum + ' 次roll武器';
+            rollnum ++;
+            newtr.appendChild(newtd);
+
+
+            inwnum = parseInt(document.getElementById('inwnum').value);
+
+
+            var team1 = new Array(100);
+            var team2 = new Array(100);
+            for(let temp = 0; temp < inwnum;temp++){
                 team1[temp] = Math.floor(Math.random()*(allcanroll)) + 1;
 
                 team2[temp] = Math.floor(Math.random()*(allcanroll)) + 1;
             }
 
-            for(let temp = 0;temp < wwnum; temp++){
+            for(let temp = 0;temp < inwnum; temp++){
                 rollone(team1[temp], 1);
             }
-            for(let temp = 0;temp < wwnum; temp++){
+            for(let temp = 0;temp < inwnum; temp++){
                 rollone(team2[temp], 2);
             }
         }
@@ -292,7 +303,7 @@
                         <option value= '1' >队伍内武器不可重复</option>
                     </select> -->
                  <p>请输入每一队想要的武器数量</p>
-                 <input type = "text" id = "wnum" value = "4"/>
+                 <input type = "text" id = "inwnum" value = "4"/>
                 <input  id="button" type="button" value="Roll!" onclick="rollfunction()">
                 <table class = "table2", id="resulttable"></table>
             </div>
