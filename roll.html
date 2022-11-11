@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>喷喷喷技能序列搜索器</title>
+        <link rel="icon" href="icon/star.ico">
+	</head>
+    <script>
+        
+        var num_weapons = [2, 2, 13, 6, 7, 4, 2, 5, 5, 5, 3];
+        var roll1 = [1, 1];
+        var roll2 = [1, 1];
+        var roll3 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+        var roll4 = [1, 1, 1, 1, 1, 1];
+        var roll5 = [1, 1, 1, 1, 1, 1, 1];
+        var roll6 = [1, 1, 1, 1];
+        var roll7 = [1, 1];
+        var roll8 = [1, 1, 1, 1, 1];
+        var roll9 = [1, 1, 1, 1, 1];
+        var roll10 = [1, 1, 1, 1, 1];
+        var roll11 = [1, 1, 1];
+        var rollall = [roll1, roll2, roll3, roll4, roll5, roll6, roll7, roll8, roll9, roll10, roll11];
+
+        var weapons1 = [
+            "三发猎鱼弓",
+            "LACT-450"
+        ];
+        var weapons2 = [
+            "雨刷刮水刀",
+            "工作刮水刀",
+        ];
+        var weapons3 = [
+            "新叶射击枪",
+            "斯普拉射击枪",
+            "专业模型枪MG",
+            "N-ZAP85",
+            "顶尖射击枪",
+            "广域标记枪",
+            ".52加仑",
+            "L3卷管枪",
+            "喷射清洁枪",
+            "窄域标记枪",
+            ".96加仑",
+            "开瓶喷泉枪",
+            "H3卷管枪"
+        ];
+        var weapons4 = [
+        "火热爆破枪",
+            "快速爆破枪",
+            "远距爆破枪",
+            "新星爆破枪",
+            "冲涂爆破枪",
+            "快速爆破枪精英"
+        ];
+        var weapons5 = [
+        "斯普拉蓄力狙击枪",
+            "鱿快洁a",
+            "斯普拉准心枪",
+            "公升4K",
+            "14式竹筒枪甲",
+            "高压油管枪",
+            "4K准心枪"
+        ];
+        var weapons6 = [
+        "斯普拉滚筒",
+            "碳纤维滚筒",
+            "电动马达滚筒",
+            "可变式滚筒"
+        ];
+        var weapons7 = [
+            "北斋",
+            "巴勃罗"
+        ];
+        var weapons8 = [
+        "飞溅泼桶",
+            "洗笔筒",
+            "回旋泼桶",
+            "溢满泡澡泼桶",
+            "爆炸泼桶"
+        ];
+        var weapons9 = [
+        "桶装旋转枪(中加)",
+            "斯普拉旋转枪(轻加)",
+            "消防栓旋转枪",
+            "鹦鹉螺号47",
+            "圆珠笔"
+        ];
+        var weapons10 = [
+            "斯普拉机动枪",
+            "双重清洁枪",
+            "溅镀枪",
+            "四重弹跳手枪",
+            "黑开尔文525"
+        ];
+        var weapons11 = [
+            "遮阳防空伞",
+            "露营防空伞",
+            "特务配件"
+        ];
+        var weaponall = [weapons1, weapons2, weapons3, weapons4, weapons5, weapons6, weapons7, weapons8, weapons9, weapons10, weapons11];
+
+        function AddTableone(aw, bw){
+            var tabtoadd = document.getElementById('wbantable');
+            var newtr = document.createElement("tr");
+            tabtoadd.appendChild(newtr);
+            var newtd = document.createElement("td");
+
+            if(rollall[aw][bw] == 0)    return;
+
+            newtd.innerHTML = weaponall[aw][bw];
+            newtr.appendChild(newtd);
+            rollall[aw][bw] = 0;
+            var newtd = document.createElement("td");
+            var delbtn = document.createElement("a");
+            delbtn.innerText = ' 删除 ';
+            delbtn.href = "#";
+            delbtn.onclick = function (){
+
+                for(let temp = 0;temp < 11;temp ++){
+                    for(let ti = 0; ti < num_weapons[temp]; ti++){
+                        if(this.parentNode.parentNode.innerHTML == "<td>" + weaponall[temp][ti] + '</td><td><a href="#"> 删除 </a></td>'){
+                            rollall[temp][ti] = 1;
+                        }
+                    }
+                }
+                tabtoadd.removeChild(this.parentNode.parentNode);
+            }
+            newtd.appendChild(delbtn);
+            newtr.appendChild(newtd);
+
+
+        }
+        function AddTable(wnum){
+            wnum = wnum;
+            var wban = parseInt(document.getElementById('w' + wnum).value);
+            wnum = wnum - 1;
+            if(wban == -99) return;
+            if(wban < 0){
+                let i = num_weapons[wnum];
+                for(let j = 0; j < i; j++){
+                    AddTableone(wnum, j);
+                }
+                return;
+            }
+            AddTableone(wnum, wban);
+        }
+        function rollone(res, team){
+            var tabtoadd = document.getElementById('resulttable');
+            var newtr = document.createElement("tr");
+            tabtoadd.appendChild(newtr);
+            
+            rs = res;
+            for(let temp = 0; temp < 11; temp++){
+                for(let tt = 0; tt < num_weapons[temp]; tt++){
+                    if(rollall[temp][tt] == 1)  rs--;
+                    if(rs == 0 && team == 1){
+                        var newtd = document.createElement("td");
+                        newtd.innerHTML = '  team ' + team;
+                        newtr.appendChild(newtd);
+                        var newtd = document.createElement("td");
+                        newtd.innerHTML = "<img src = 'icon/weapon/" + temp + '_'+ tt + ".png' style = 'width:50px;' >" + weaponall[temp][tt];
+                        newtr.appendChild(newtd);
+                        return;
+                    }
+                    if(rs == 0 && team == 2){
+                        var newtd = document.createElement("th");
+                        newtd.innerHTML = '  team ' + team;
+                        newtr.appendChild(newtd);
+                        var newtd = document.createElement("th");
+                        newtd.innerHTML = "<img src = 'icon/weapon/" + temp + '_'+ tt + ".png' style = 'width:50px;' >" + weaponall[temp][tt];
+                        newtr.appendChild(newtd);
+                        return;
+                    }
+                }
+            }
+
+        }
+        function rollfunction(){
+            //repeat = parseInt(document.getElementById('in1').value);
+
+            IDtable0  = document.getElementById('resulttable');
+            tab = '';
+            IDtable0.innerHTML = tab;
+
+        
+            var allcanroll = 0;
+            for(let temp = 0; temp < 11; temp++){
+                for(let tt = 0; tt < num_weapons[temp]; tt++){
+                    if(rollall[temp][tt] == 1)  allcanroll++;
+                }
+            }
+
+            var team1 = new Array(4);
+            var team2 = new Array(4);
+            for(let temp = 0; temp < 4;temp++){
+                team1[temp] = Math.floor(Math.random()*(allcanroll)) + 1;
+
+                team2[temp] = Math.floor(Math.random()*(allcanroll)) + 1;
+            }
+
+            for(let temp = 0;temp < 4; temp++){
+                rollone(team1[temp], 1);
+            }
+            for(let temp = 0;temp < 4; temp++){
+                rollone(team2[temp], 2);
+            }
+        }
+        
+    </script>
+    <style>
+        .ability0{
+            background: url('icon/brand/B00.png');
+            padding-left: 20px; 
+        }
+
+        a {
+            text-decoration:underline;
+        }
+        a:hover {
+            color: #b8a5f5;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border: 1px;
+    
+        }
+        .table2 {
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border: 1px;
+        }
+
+        table td{
+            border: 1px solid black;
+            text-align: center;
+            background-color: rgb(255, 240, 220);
+            width: 500px;
+            height: 50px;
+        }
+        table th1{
+            border: 1px solid black;
+            text-align: center;
+            background-color: rgb(255, 240, 220);
+            width: 1000px;
+        }
+        table th{
+            border: 1px solid black;
+            height: 50px;
+            width: 1000px;
+            background-color: rgb(139, 165, 222);
+            text-align: center;
+        }
+        body {
+            background-color: #e9ecef;
+            width: 80%;
+            padding: 4rem 2rem;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+        }
+        .wrapper {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 1rem;
+            margin-top: 10px;
+        }
+        table tr.header, table tr:hover {
+            /* 表头及鼠标移动过 tr 时添加背景 */
+            background-color: #f1f1f1;
+        }
+        </style>
+    <body>
+       
+
+        
+        <div class = "content">
+            <div class="wrapper">
+            <h2>Splatoon随机武器</h2>
+                <a href="index.html">返回搜索器</a>
+                <p>可以用来作为私房随机武器</p>
+		    </div>
+            <div class = "wrapper">
+                <h2>ROLL武器</h2>
+                    <!-- <select id="in1">
+                        <option value= '0' >队伍内武器可重复</option>
+                        <option value= '1' >队伍内武器不可重复</option>
+                    </select> -->
+                
+                <input  id="button" type="button" value="Roll!" onclick="rollfunction()">
+                <table class = "table2", id="resulttable"></table>
+            </div>
+
+
+            <div class = "wrapper">
+            <h2>禁用武器</h2>
+                <h3>弓箭类</h3>
+                    <select id="w1">
+                        <option value= '-99' >无</option>
+                        <option value= '-1' >全部禁用</option>
+                        <option value= '0' >三发猎鱼弓</option>
+                        <option value= '1' >LACT-450</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(1);">
+
+
+                <h3>刮水刀类</h3>
+                    <select id="w2">
+                        <option value= '-99' >无</option>
+                        <option value= '-2' >全部禁用</option>
+                        <option value= '0' >雨刷刮水刀</option>
+                        <option value= '1' >工作刮水刀</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(2);">
+
+                <h3>射击枪类</h3>
+                    <select id="w3">
+                        <option value= '-99' >无</option>
+                        <option value= '-3' >全部禁用</option>
+                        <option value= '0' >新叶射击枪</option>
+                        <option value= '1' >斯普拉射击枪</option>
+                        <option value= '2' >专业模型枪MG</option>
+                        <option value= '3' >N-ZAP85</option>
+                        <option value= '4' >顶尖射击枪</option>
+                        <option value= '5' >广域标记枪</option>
+                        <option value= '6' >.52加仑</option>
+                        <option value= '7' >L3卷管枪</option>
+                        <option value= '8' >喷射清洁枪</option>
+                        <option value= '9' >窄域标记枪</option>
+                        <option value= '10' >.96加仑</option>
+                        <option value= '11' >开瓶喷泉枪</option>
+                        <option value= '12' >H3卷管枪</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(3);">
+
+                <h3>爆破枪类</h3>
+                    <select id="w4">
+                        <option value= '-99' >无</option>
+                        <option value= '-4' >全部禁用</option>
+                        <option value= '0' >火热爆破枪</option>
+                        <option value= '1' >快速爆破枪</option>
+                        <option value= '2' >远距爆破枪</option>
+                        <option value= '3' >新星爆破枪</option>
+                        <option value= '4' >冲涂爆破枪</option>
+                        <option value= '5' >快速爆破枪精英</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(4);">
+
+                <h3>狙击枪类</h3>
+                    <select id="w5">
+                        <option value= '-99' >无</option>
+                        <option value= '-5' >全部禁用</option>
+                        <option value= '0' >斯普拉蓄力狙击枪</option>
+                        <option value= '1' >鱿快洁a</option>
+                        <option value= '2' >斯普拉准心枪</option>
+                        <option value= '3' >公升4K</option>
+                        <option value= '4' >14式竹筒枪甲</option>
+                        <option value= '5' >高压油管枪</option>
+                        <option value= '6' >4K准心枪</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(5);">
+
+                <h3>滚筒类</h3>
+                    <select id="w6">
+                        <option value= '-99' >无</option>
+                        <option value= '-6' >全部禁用</option>
+                        <option value= '0' >斯普拉滚筒</option>
+                        <option value= '1' >碳纤维滚筒</option>
+                        <option value= '2' >电动马达滚筒</option>
+                        <option value= '3' >可变式滚筒</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(6);">
+
+                <h3>笔刷类</h3>
+                    <select id="w7">
+                        <option value= '-99' >无</option>
+                        <option value= '-7' >全部禁用</option>
+                        <option value= '0' >北斋</option>
+                        <option value= '1' >巴勃罗</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(7);">
+
+                <h3>桶类</h3>
+                    <select id="w8">
+                        <option value= '-99' >无</option>
+                        <option value= '-8' >全部禁用</option>
+                        <option value= '0' >飞溅泼桶</option>
+                        <option value= '1' >洗笔筒</option>
+                        <option value= '2' >回旋泼桶</option>
+                        <option value= '3' >溢满泡澡泼桶</option>
+                        <option value= '4' >爆炸泼桶</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(8);">
+
+                <h3>加特林类</h3>
+                    <select id="w9">
+                        <option value= '-99' >无</option>
+                        <option value= '-9' >全部禁用</option>
+                        <option value= '0' >桶装旋转枪(中加)</option>
+                        <option value= '1' >斯普拉旋转枪(轻加)</option>
+                        <option value= '2' >消防栓旋转枪</option>
+                        <option value= '3' >鹦鹉螺号47</option>
+                        <option value= '4' >圆珠笔</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(9);">
+
+                <h3>双枪类</h3>
+                    <select id="w10">
+                        <option value= '-99' >无</option>
+                        <option value= '-10' >全部禁用</option>
+                        <option value= '0' >斯普拉机动枪</option>
+                        <option value= '1' >双重清洁枪</option>
+                        <option value= '2' >溅镀枪</option>
+                        <option value= '3' >四重弹跳手枪</option>
+                        <option value= '4' >黑开尔文525</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(10);">
+
+                <h3>伞类</h3>
+                    <select id="w11">
+                        <option value= '-99' >无</option>
+                        <option value= '-11' >全部禁用</option>
+                        <option value= '0' >遮阳防空伞</option>
+                        <option value= '1' >露营防空伞</option>
+                        <option value= '2' >特务配件</option>
+                    </select>
+                    <input  id="button" type="button" value="添加" onclick="AddTable(11);">
+
+            <table class = "table2", id="wbantable"> <head> <tr> <td> 禁用的武器 </td> <td>  操作  </td> </tr></head> </table>
+            </div>
+
+
+        </div>
+    </body>
+</html>
+
