@@ -22,6 +22,7 @@
         "无法无天 / Annaki",
         "鱿皇 / Enperry",
         "剑尖鱿 / Toni Kensa",
+        "泽酷暖流 / Z+F",
         "散寿司 / Barazushi",
         "七轮 / Emberz",
         "熊先生商会 / Grizzco",
@@ -47,7 +48,7 @@
         ];
         var TargetCode = new Array(3);
         var BrandTend = [11, 0, 9, 8, 4, 12, 3, 4, 6, 5, 7, 1, 1, 2, 8, 6, 0, 3, 12, 13, 
-        2, 9, 5, 7, 1, 6, 10, 11, 0, 10, 13, 10, 13, 5, -1, -1, -1, -1, -1, -1];
+        2, 9, 5, 7, 1, 6, 10, 11, 0, 10, 6, 2, 13, 10, 13, 5, -1, -1, -1, -1, -1, -1];
 
         var ddrinklist = [0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0];
         class GearAbility{
@@ -737,26 +738,27 @@
                 <h2>请选择衣服品牌</h2>
                 <p>
                   <select id="IDClothes">
-                      <option value= '0' selected label="战斗鱿鱼 / SquidForce" class = "ability0" >战斗鱿鱼 / SquidForce</option>
-                      <option value= '1' label="钢铁先锋 / Zink" class = "ability0">钢铁先锋 / Zink</option>
-                      <option value= '2' label="海月 / Krak-On">海月 / Krak-On</option>
-                      <option value= '3' label="罗肯贝格 / Rockenberg">罗肯贝格 / Rockenberg</option>
-                      <option value= '4' label="泽酷 / Zekko">泽酷 / Zekko</option>
-                      <option value= '5' label="锻品 / Forge">锻品 / Forge</option>
-                      <option value= '6' label="暖流 / Firefin">暖流 / Firefin</option>
-                      <option value= '7' label="帆立 / Skalop">帆立 / Skalop</option>
-                      <option value= '8' label="寺门 / Splash Mob">寺门 / Splash Mob</option>
-                      <option value= '9' label="时雨 / Inkline">时雨 / Barazushi</option>
-                      <option value= '10' label="艾洛眼 / Tentatek">艾洛眼 / Tentatek</option>
-                      <option value= '11' label="暇古 / Takoroka">暇古 / Takoroka</option>
-                      <option value= '12' label="无法无天 / Annaki">无法无天 / Annaki</option>
-                      <option value= '13' label="鱿皇 / Enperry">鱿皇 / Enperry</option>
-                      <option value= '14' label="剑尖鱿 / Toni Kensa">剑尖鱿 / Toni Kensa</option>
-                      <option value= '15' label="散寿司 / Barazushi">散寿司 / Barazushi</option>
-                      <option value= '16' label="七轮 / Emberz">七轮 / Emberz</option>
-                      <option value= '17' label="熊先生商会 / Grizzco">熊先生商会 / Grizzco</option>
-                      <option value= '18' label="鱼干制造 / Cuttlegear">鱼干制造 / Cuttlegear</option>
-                      <option value= '19' label="amiibo">amiibo</option>
+                    <option value= '0' selected label="战斗鱿鱼 / SquidForce" class = "ability0" >战斗鱿鱼 / SquidForce</option>
+                    <option value= '1' label="钢铁先锋 / Zink" class = "ability0">钢铁先锋 / Zink</option>
+                    <option value= '2' label="海月 / Krak-On">海月 / Krak-On</option>
+                    <option value= '3' label="罗肯贝格 / Rockenberg">罗肯贝格 / Rockenberg</option>
+                    <option value= '4' label="泽酷 / Zekko">泽酷 / Zekko</option>
+                    <option value= '5' label="锻品 / Forge">锻品 / Forge</option>
+                    <option value= '6' label="暖流 / Firefin">暖流 / Firefin</option>
+                    <option value= '7' label="帆立 / Skalop">帆立 / Skalop</option>
+                    <option value= '8' label="寺门 / Splash Mob">寺门 / Splash Mob</option>
+                    <option value= '9' label="时雨 / Inkline">时雨 / Barazushi</option>
+                    <option value= '10' label="艾洛眼 / Tentatek">艾洛眼 / Tentatek</option>
+                    <option value= '11' label="暇古 / Takoroka">暇古 / Takoroka</option>
+                    <option value= '12' label="无法无天 / Annaki">无法无天 / Annaki</option>
+                    <option value= '13' label="鱿皇 / Enperry">鱿皇 / Enperry</option>
+                    <option value= '14' label="剑尖鱿 / Toni Kensa">剑尖鱿 / Toni Kensa</option>
+                    <option value= '15' label="泽酷暖流 / Z+F">泽酷暖流 / Z+F</option>
+                    <option value= '16' label="散寿司 / Barazushi">散寿司 / Barazushi</option>
+                    <option value= '17' label="七轮 / Emberz">七轮 / Emberz</option>
+                    <option value= '18' label="熊先生商会 / Grizzco">熊先生商会 / Grizzco</option>
+                    <option value= '19' label="鱼干制造 / Cuttlegear">鱼干制造 / Cuttlegear</option>
+                    <option value= '20' label="amiibo">amiibo</option>
                   </select>
                 </p>
                 </div>

@@ -6,6 +6,7 @@
 	</head>
     <script>
         var MAX_STEP = 30;
+        var brandnum = 21;
         var BrandName = [
         "戰鬥魷魚 / SquidForce",
         "鋼鐵先鋒 / Zink",
@@ -22,6 +23,7 @@
         "無法無天 / Annaki",
         "魷皇 / Enperry",
         "劍尖魷 / Toni Kensa",
+        "澤酷暖流 / Z+F",
         "散壽司 / Barazushi",
         "七輪 / Emberz",
         "熊先生商會 / Grizzco",
@@ -47,7 +49,7 @@
         ];
         var TargetCode = new Array(3);
         var BrandTend = [11, 0, 9, 8, 4, 12, 3, 4, 6, 5, 7, 1, 1, 2, 8, 6, 0, 3, 12, 13, 
-        2, 9, 5, 7, 1, 6, 10, 11, 0, 10, 13, 10, 13, 5, -1, -1, -1, -1, -1, -1];
+        2, 9, 5, 7, 1, 6, 10, 11, 0, 10, 6, 2, 13, 10, 13, 5, -1, -1, -1, -1, -1, -1];
 
         var ddrinklist = [0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0];
         class GearAbility{
@@ -716,7 +718,9 @@
         <div class = "content">
             <div class="wrapper">
             <h1>噴噴噴技能序列搜索器</h1>
-                <a href="index.html">切換简体中文</a>
+                <p>其他功能：<a href="roll.html">隨機武器</a></p>
+                <a href="index_fcn.html">切換繁體中文</a>
+                <a href="index_nop.html">切換無圖片網站</a>
                 <p>歡迎使用本網站，這裏有<strong>教程與問過的問題</strong>，有問題可以參考一下，如果還無法解決可以聯系我：<a href="Tutorial.html">教程與更新公告</a></p>
 				<p><strong><u>註意：請一定要看一下各個選項的介紹與註意事項，並且使用方案之前請去lean大佬的網站驗證一下路線，有bug請及時反饋</u></strong></p>
                 <p>此網站是用來輔助尋找自己想要的技能的</p>
@@ -752,11 +756,12 @@
                       <option value= '12' label="無法無天 / Annaki">無法無天 / Annaki</option>
                       <option value= '13' label="魷皇 / Enperry">魷皇 / Enperry</option>
                       <option value= '14' label="劍尖魷 / Toni Kensa">劍尖魷 / Toni Kensa</option>
-                      <option value= '15' label="散壽司 / Barazushi">散壽司 / Barazushi</option>
-                      <option value= '16' label="七輪 / Emberz">七輪 / Emberz</option>
-                      <option value= '17' label="熊先生商會 / Grizzco">熊先生商會 / Grizzco</option>
-                      <option value= '18' label="魚幹製造 / Cuttlegear">魚幹製造 / Cuttlegear</option>
-                      <option value= '19' label="amiibo">amiibo</option>
+                      <option value= '15' label="澤酷暖流 / Z+F">澤酷暖流 / Z+F</option>
+                      <option value= '16' label="散壽司 / Barazushi">散壽司 / Barazushi</option>
+                      <option value= '17' label="七輪 / Emberz">七輪 / Emberz</option>
+                      <option value= '18' label="熊先生商會 / Grizzco">熊先生商會 / Grizzco</option>
+                      <option value= '19' label="魚幹製造 / Cuttlegear">魚幹製造 / Cuttlegear</option>
+                      <option value= '20' label="amiibo">amiibo</option>
                   </select>
                 </p>
                 </div>
